@@ -114,8 +114,8 @@ boolean flag = true;
                 st=con.createStatement();
                 System.out.println("Obteniendo datos...");
                 System.out.println("Step 1");
-                PreparedStatement stmt=con.prepareStatement("SELECT id_usuarios, NombreUsuario, TipoUsuario  correo FROM Usuario WHERE correo='" + correo + "' and contra='" + contra + "'");
-                ResultSet rs=stmt.executeQuery("SELECT id_usuarios, NombreUsuario, TipoUsuario  correo FROM Usuario WHERE correo='" + correo + "' and contra='" + contra + "'");
+                PreparedStatement stmt=con.prepareStatement("SELECT id_usuarios, NombreUsuario, TipoUsuario,  correo FROM Usuario WHERE correo='" + correo + "' and contra='" + contra + "'");
+                ResultSet rs=stmt.executeQuery("SELECT id_usuarios, NombreUsuario, TipoUsuario,  correo FROM Usuario WHERE correo='" + correo + "' and contra='" + contra + "'");
                 while(rs.next()){
                     idu = rs.getString("id_usuarios");
                     nom = rs.getString("NombreUsuario");
