@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  * @author bruni
  */
 @WebServlet(name = "Registrar", urlPatterns = {"/Registrar"})
-public class Registrar extends HttpServlet {
+public class RegistrarE extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -84,9 +84,10 @@ public class Registrar extends HttpServlet {
                 String NombreUsuario = "";
                 String Contrasena = "";
                 String CContrasena = "";
-                String Antecedentes = "";
-                String Descripcion = "";
-                String Genero = "";
+                String NombreE = "";
+                String Localizacion = "";
+                String TipoDeEmpresa = "";
+                String Verificacion = "";
                 
 boolean flag = true;
                 if(request.getParameter("Nombre") != null){
@@ -110,14 +111,17 @@ boolean flag = true;
                 if(request.getParameter("CContrasena") != null){
 			CContrasena = request.getParameter("CContrasena");
 		}
-                if(request.getParameter("Antecedentes") != null){
-			Antecedentes = request.getParameter("Antecedentes");
+                if(request.getParameter("NombreE") != null){
+			NombreE = request.getParameter("NombreE");
 		}
-                if(request.getParameter("Descripcion") != null){
-			Descripcion = request.getParameter("Descripcion");
+                if(request.getParameter("Localizacion") != null){
+			Localizacion = request.getParameter("Localizacion");
 		}
-                if(request.getParameter("Genero") != null){
-			Genero = request.getParameter("Genero");
+                if(request.getParameter("TipoDeEmpresa") != null){
+			TipoDeEmpresa = request.getParameter("TipoDeEmpresa");
+		}
+                if(request.getParameter("Verificacion") != null){
+			Verificacion = request.getParameter("Verificacion");
 		}
                 
 		//revisar que sean validos
@@ -156,18 +160,18 @@ boolean flag = true;
                 flag = false;
                 System.out.println("False nomp");
                 }
-                if(Antecedentes == "" || Antecedentes.length()>60){
+                if(NombreE == "" || NombreE.length()>60){
                 request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
                 flag = false;
                 System.out.println("False nomp");
                 }
-                if(Descripcion == "" || Descripcion.length()>60){
+                if(Localizacion == "" || Localizacion.length()>60){
                 request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
                 flag = false;
                 System.out.println("False nomp");
                 }
                 
-                if(Genero == ""){
+                if(TipoDeEmpresa == "" || TipoDeEmpresa.length()>60){
                 request.setAttribute("a3", "<font color='white'>(Ingresa un consultorio)</font>");
                 flag=false;
                 System.out.println("False sex");
@@ -207,20 +211,20 @@ boolean flag = true;
                         
                         System.out.println("Iniciando incercion");
                         
-                        st.executeUpdate("INSERT INTO Usuario(Nombres, Apellido, Correo, FechaDeNac, NombreUsuario, Contrasena, TipoUsuario_idTipoUsuario) VALUES ('" + Nombre +"', '" + Apellido +"', '" + Correo +"', '" + FechaDeNac +"', '" + NombreUsuario +"', '" + Contrasena +"', '1')");
+                        st.executeUpdate("INSERT INTO Usuario(Nombres, Apellido, Correo, FechaDeNac, NombreUsuario, Contrasena, TipoUsuario_idTipoUsuario) VALUES ('" + Nombre +"', '" + Apellido +"', '" + Correo +"', '" + FechaDeNac +"', '" + NombreUsuario +"', '" + Contrasena +"', '2')");
                         stmt=con.prepareStatement("SELECT id_Usuarios FROM Usuario WHERE correo='" +  Correo + "'");
                         rs=stmt.executeQuery("SELECT id_Usuarios FROM Usuario WHERE correo='" +  Correo + "'");
                         while(rs.next()){
                         idp = rs.getString("id_Usuarios");
                         prov1++;
                         }
-                        st2.executeUpdate("INSERT INTO DatosDev(Antecedentes, Descripcion, Genero_idGenero, Usuario_id_usuario) VALUES ('" + Antecedentes +"', '" + Descripcion +"', '" + Genero +"', '" + idp +"')");
+                        st2.executeUpdate("INSERT INTO DatosEmpresa(Nombre, Localizacion, TipoDeEmpreza, Verificacion, Usuario_id_usuarios) VALUES ('" + NombreE +"', '" + Localizacion +"', '" + TipoDeEmpresa +"', '" + Verificacion +"', '" + idp +"')");
                         
                         HttpSession sesion=request.getSession();
                         
                         sesion.setAttribute("id",idp);
                         sesion.setAttribute("usuario",NombreUsuario);
-                        sesion.setAttribute("prioridad","1");
+                        sesion.setAttribute("prioridad","2");
                         
                         }else{
                             RequestDispatcher rd = request.getRequestDispatcher("registrar.jsp"); 
@@ -238,13 +242,13 @@ boolean flag = true;
             }
             
             }catch (SQLException ex) {
-			Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(RegistrarE.class.getName()).log(Level.SEVERE, null, ex);
 		} catch (ClassNotFoundException ex) {
-            Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegistrarE.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegistrarE.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegistrarE.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
