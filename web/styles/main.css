@@ -99,3 +99,25 @@
 
 /* Formulario para empresa */
 
+/* Inicio desarrollador */
+.card img {
+  width: 100%;
+  height: auto;
+  max-width: 150px; 
+  object-fit: cover;
+  display: block;
+  margin:auto;
+}
+
+@media (max-width: 768px) {
+  .card img {
+      max-width: 100px; 
+  }
+}
+
+main.container {
+  padding-top: 60px; /* Ajusta este valor según la altura de tu navbar */
+}
+
+
+
