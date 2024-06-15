@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../images/logo.jpg">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
+    <title>Registro desarrollador</title>
+</head>
+<body class="contenedor-principal">
+  <section class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow rounded p-4" style="max-width: 700px">
+    <!-- Logo del proyecto y el titulo -->
+    <div class="logo-y-titulo">
+      <img src="../images/logo.jpg" alt="" class="logo">
+      <h1>Crear cuenta <br/> para desarrolladores</h1>
+    </div>
+
+    <form method="post" action="Registrar" id="formulario-desarrollador">
+      <div class="formulario-registro">
+        <div class="contexto-y-entrada mb-3">
+          <label for="nombreUsuario" class="form-label">Nombre*</label>
+          <input type="text" class="entrada-formulario-registro form-control" id="nombreUsuario" name="Nombre" autofocus required maxlength="60" placeholder="Nombre">
+          <span class="mensaje-error">Ingresa un nombre valido</span>
+        </div>
+
+        <div class="contexto-y-entrada">
+          <label for="apellidosUsuario" class="form-label">Apellidos*</label>
+          <input type="text" class="entrada-formulario-registro form-control" id="apellidosUsuario" name="Apellido" required maxlength="60" placeholder="Apellidos">
+          <span class="mensaje-error">Ingresa apellidos validos</span>
+        </div>
+        
+        <div class="contexto-y-entrada">
+          <label for="correoUsuario" class="form-label">Correo electrónico*</label>
+          <input type="email" class="entrada-formulario-registro form-control" id="correoUsuario" name="Correo" required maxlength="45" placeholder="email@example.com">
+          <span class="mensaje-error">Ingresa un correo valido</span>
+        </div>
+        
+        <div class="contexto-y-entrada">
+          <label for="contraseniaUsuario form-label">Contraseña*</label>
+          <input type="password" class="entrada-formulario-registro form-control" id="contraseniaUsuario" name="Contrasena" required placeholder="Contraseña" minlength="8" maxlength="12">
+          <span class="mensaje-error">Ingresa una contraseña valida</span>
+        </div>
+          
+          <div class="contexto-y-entrada">
+          <label for="contraseniaUsuario form-label">Confirmar Contraseña*</label>
+          <input type="password" class="entrada-formulario-registro form-control" id="contraseniaUsuario" name="CContrasena" required placeholder="Confirmar Contraseña" minlength="8" maxlength="12">
+          <span class="mensaje-error">Contraseñas no coinciden</span>
+        </div>
+        
+        <div class="contexto-y-entrada">
+          <label for="fechaNacimientoUsuario form-label">Fecha de nacimiento*</label>
+          <input type="date" class="entrada-formulario-registro form-control" id="fechaNacimientoUsuario" name="FechaDeNac" min="1924-01-01" required>
+          <span class="mensaje-error">Ingresa una fecha valida</span>
+        </div> 
+        
+        <div class="contexto-y-entrada">
+          <label for="generoUsuario" class="form-label">Genero*</label>
+          <select id="generoUsuario" class="entrada-formulario-registro form-control" name="Genero">
+            <option value="1">Masculino</option>
+            <option value="2">Femenino</option>
+            <option value="3" selected>Prefiero no especificarlo</option>
+          </select>
+        </div>
+        
+        <div class="contexto-y-entrada">
+          <label for="nicknameUsuario form-label">Nombre de usuario*</label>
+          <input type="text" class="entrada-formulario-registro form-control" id="nicknameUsuario" name="NombreUsuario" required maxlength="45" placeholder="Username">
+          <span class="mensaje-error">Ingresa un nombre de usuario valido</span>
+        </div>
+        
+        <div class="contexto-y-entrada">
+          <label for="nicknameUsuario form-label">Antecedentes*</label>
+          <input type="text" class="entrada-formulario-registro form-control" id="nicknameUsuario" name="Antecedentes" required maxlength="45" placeholder="Antecedentes">
+          <span class="mensaje-error">Ingresa sus antecedentes</span>
+        </div>
+          
+        <div class="contexto-y-entrada">
+          <label for="nicknameUsuario form-label">Descripcion*</label>
+          <input type="text" class="entrada-formulario-registro form-control" id="nicknameUsuario" name="Descripcion" required maxlength="45" placeholder="Descripcion">
+          <span class="mensaje-error">Ingresa sus descripcion</span>
+        </div>
+      </div>
+
+      <div class="botones-formulario-desarrollador">
+        <a href="registroEmpresa.html" class="cambio-formulario">¿Eres una empresa? Da click aquí</a>
+        <a href="index.jsp" class="cambio-formulario">¡Ya tengo una cuenta!</a>
+        <input type="submit" class="boton-enviar btn btn-primary" value="Registrate">
+
+      </div>
+    </form>
+    </div>
+  </section>
+
+  <script src="../scripts/registroDesarrollador.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

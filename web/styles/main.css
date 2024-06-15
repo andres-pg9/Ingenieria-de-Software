@@ -1,0 +1,101 @@
+/* Estilos para el formulario de inicio de sesión */
+.contenedor-principal {
+  background-color: #e5e5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.contenedor-secundario {
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.logo-y-titulo {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 10px 0 25px 0;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.logo-y-titulo > h1 {
+  align-self: center;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-login > label {
+  font-weight: bold;
+
+}
+
+.entrada-form {
+  padding: 5px;
+}
+
+.boton-enviar {
+  width: 40%;
+  padding: 8px;
+  align-self: center;
+}
+
+.enlaces {
+  display: flex;
+  gap: 50px;
+}
+
+.mensaje-error {
+  text-align: center;
+  display: none;
+}
+
+/* Estilos para el formulario de registro de usuarios */
+/* Formulario para desarrollador */
+.contenedor-formulario-registro {
+  padding: 20px;
+  border: 1px solid black;
+  width: 30%;
+}
+
+.formulario-registro {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+
+.contexto-y-entrada {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.entrada-formulario-registro {
+  padding: 5px;
+}
+
+.contexto-y-entrada > .mensaje-error {
+  text-align: left;
+}
+
+.botones-formulario-desarrollador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Formulario para empresa */
+

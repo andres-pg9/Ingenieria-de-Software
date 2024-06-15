@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  * @author bruni
  */
 @WebServlet(name = "Registrar", urlPatterns = {"/Registrar"})
-public class Registrar extends HttpServlet {
+public class AltaProyecto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -207,7 +207,7 @@ boolean flag = true;
                         
                         System.out.println("Iniciando incercion");
                         
-                        st.executeUpdate("INSERT INTO Usuario(Nombres, Apellido, Correo, FechaDeNac, NombreUsuario, Contrasena, TipoUsuario_idTipoUsuario) VALUES ('" + Nombre +"', '" + Apellido +"', '" + Correo +"', '" + FechaDeNac +"', '" + NombreUsuario +"', '" + Contrasena +"', '1')");
+                        st.executeUpdate("INSERT INTO Proyecto(Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas) VALUES ('', '', '', '','', '', '', '')");
                         stmt=con.prepareStatement("SELECT id_Usuarios FROM Usuario WHERE correo='" +  Correo + "'");
                         rs=stmt.executeQuery("SELECT id_Usuarios FROM Usuario WHERE correo='" +  Correo + "'");
                         while(rs.next()){
@@ -238,13 +238,13 @@ boolean flag = true;
             }
             
             }catch (SQLException ex) {
-			Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(AltaProyecto.class.getName()).log(Level.SEVERE, null, ex);
 		} catch (ClassNotFoundException ex) {
-            Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AltaProyecto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AltaProyecto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AltaProyecto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
