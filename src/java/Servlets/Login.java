@@ -21,15 +21,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 /**
  *
  * @author bruni
  */
-@WebServlet(name = "LogInP", urlPatterns = {"/LogInP"})
-public class LogInP extends HttpServlet {
-
-    /**
+@WebServlet(name = "Login", urlPatterns = {"/Login"})
+public class Login extends HttpServlet {
+/**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -77,7 +75,7 @@ public class LogInP extends HttpServlet {
             
             System.out.println("Peticion en espera...");
 
-           
+            try {  
 
                 String correo = "";
                 String contra = "";
@@ -102,9 +100,8 @@ boolean flag = true;
                 }
                 
                 System.out.println(correo + " " + contra);
-                
+              
             if(flag==true){
-            try {
                 System.out.println("Peticion garantizada!");
                 String idu = "", nom = "", prio = "";
                 int prov1 = 0;
@@ -120,7 +117,7 @@ boolean flag = true;
                 while(rs.next()){
                     idu = rs.getString("id_usuarios");
                     nom = rs.getString("NombreUsuario");
-                    prio = rs.getString("TipoUsuario");
+                    prio = rs.getString("TipoUsuario_idTipoUsuario");
                     prov1++;
                     System.out.println(idu + " " + nom + " " + prio);
                 }
@@ -151,34 +148,36 @@ boolean flag = true;
                     
                     
                 }else{
-                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                    RequestDispatcher rd = request.getRequestDispatcher("index.html");
                     rd.forward(request,response);
                 }
                 System.out.println("listo");
+                
                 response.sendRedirect("inicioDesarrollador.jsp");
+                
                 rs.close();
                 st.close();
                 con.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(LogInP.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(LogInP.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                Logger.getLogger(LogInP.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(LogInP.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
 
             
             
             }
             else{
-            RequestDispatcher rd = request.getRequestDispatcher("iniciar.jsp"); 
+            RequestDispatcher rd = request.getRequestDispatcher("index.html"); 
              rd.forward(request,response);
             }
             }
-            
-    
+            catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
 
     public boolean validarNom(String nom){
 		String reg = "[A-Za-záéíóúÁÉÍÓÚñÑ ]*";
@@ -198,12 +197,6 @@ boolean flag = true;
 		}
 		return false;
 	}
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

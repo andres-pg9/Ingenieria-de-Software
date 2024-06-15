@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>LogInP</servlet-name>
-        <servlet-class>Servlets.LogInPC</servlet-class>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Servlets.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BD</servlet-name>
+        <servlet-class>Servlets.BD</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Registrar</servlet-name>
+        <servlet-class>Servlets.Registrar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistrarE</servlet-name>
+        <servlet-class>Servlets.RegistrarE</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaProyecto</servlet-name>
+        <servlet-class>Servlets.AltaProyecto</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LogInP</servlet-name>
-        <url-pattern>/LogInP</url-pattern>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BD</servlet-name>
+        <url-pattern>/BD</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Registrar</servlet-name>
+        <url-pattern>/Registrar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistrarE</servlet-name>
+        <url-pattern>/RegistrarE</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaProyecto</servlet-name>
+        <url-pattern>/AltaProyecto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -24,12 +24,12 @@ controlForm.addEventListener('submit', (formulario) => {
     mostrarError(mensajeError[0], false);
   }
 
-    /*console.log("pass " + !regexContrasenia.test(contraseniaIngresada.value))
+    console.log("pass " + !regexContrasenia.test(contraseniaIngresada.value))
   if(!regexContrasenia.test(contraseniaIngresada.value)){
     mostrarError(mensajeError[1], true);
   }else{
     mostrarError(mensajeError[1], false);
-  }*/
+  }
 });
 
 /* Función para mostrar el mensaje de error */
