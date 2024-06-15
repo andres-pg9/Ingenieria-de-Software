@@ -223,17 +223,17 @@ boolean flag = true;
                         sesion.setAttribute("prioridad","1");
                         
                         }else{
-                            RequestDispatcher rd = request.getRequestDispatcher("registrar.jsp"); 
+                            RequestDispatcher rd = request.getRequestDispatcher("registroDesarrollador.html"); 
                             rd.forward(request,response);
                         }
 
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("inicioDesarrollador.jsp");
             st.close();
             con.close();
 
             }
             else{
-            RequestDispatcher rd = request.getRequestDispatcher("registrar.jsp"); 
+            RequestDispatcher rd = request.getRequestDispatcher("registroDesarrollador.html"); 
              rd.forward(request,response);
             }
             

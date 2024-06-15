@@ -123,7 +123,7 @@ boolean flag = true;
                 }
                 System.out.println("Step 2");
                 System.out.println("Preparando inicio");
-                System.out.println("Buscando pacientes y medicos registrados " + prov1);
+                System.out.println("Buscando usuarios registrados " + prov1);
                 if(prov1==0 || idu.equals("") || nom.equals("") || prio.equals("")){
                     request.setAttribute("a1", "<font color='white'>(Ingresa un correo valido)</font>");
                     flag=false;
@@ -148,7 +148,7 @@ boolean flag = true;
                     
                     
                 }else{
-                    RequestDispatcher rd = request.getRequestDispatcher("index.html");
+                    RequestDispatcher rd = request.getRequestDispatcher("registroDesarrollador.html");
                     rd.forward(request,response);
                 }
                 System.out.println("listo");
@@ -164,7 +164,7 @@ boolean flag = true;
             
             }
             else{
-            RequestDispatcher rd = request.getRequestDispatcher("index.html"); 
+            RequestDispatcher rd = request.getRequestDispatcher("registroDesarrollador.html"); 
              rd.forward(request,response);
             }
             }

@@ -19,57 +19,82 @@
       <h1>Crear cuenta <br/> para empresas</h1>
     </div>
 
-    <form action="" method="" id="formulario-empresa">
+    <form method="post" action="RegistrarE" id="formulario-empresa">
       <div class="formulario-registro">
         <div class="contexto-y-entrada mb-3">
           <label for="razonSocialEmpresa" class="form-label">Razón social de la empresa*</label>
-          <input type="text" class="entrada-formulario-registro form-control" id="razonSocialEmpresa" autofocus required maxlength="45" placeholder="Razón social">
+          <input type="text" class="entrada-formulario-registro form-control" id="razonSocialEmpresa" name="NombreE" autofocus required maxlength="45" placeholder="Razón social">
           <span class="mensaje-error">Ingresa una razón social valida</span>
+        </div>
+          
+        <div class="contexto-y-entrada mb-3">
+          <label for="razonSocialEmpresa" class="form-label">Nombre del encargado de la cuenta*</label>
+          <input type="text" class="entrada-formulario-registro form-control" id="razonSocialEmpresa" name="Nombre" autofocus required maxlength="45" placeholder="Nombre del encargado de la cuenta">
+          <span class="mensaje-error">Ingresa el nombre del encargado de la cuenta</span>
+        </div>
+          
+        <div class="contexto-y-entrada mb-3">
+          <label for="razonSocialEmpresa" class="form-label">Apellidos del encargado de la cuenta*</label>
+          <input type="text" class="entrada-formulario-registro form-control" id="razonSocialEmpresa" name="Apellido" autofocus required maxlength="45" placeholder="Apellidos del encargado de la cuenta">
+          <span class="mensaje-error">Ingresa los apellidos del encargado de la cuenta</span>
         </div>
      
         <div class="contexto-y-entrada mb-3">
           <label for="correoEmpresa" class="form-label">Correo electrónico*</label>
-          <input type="email" class="entrada-formulario-registro form-control" id="correoEmpresa" required maxlength="45" placeholder="email@empresa.com">
+          <input type="email" class="entrada-formulario-registro form-control" id="correoEmpresa" name="Correo" required maxlength="45" placeholder="email@empresa.com">
           <span class="mensaje-error">Ingresa un correo valido</span>
         </div>
         
+        <div class="contexto-y-entrada">
+          <label for="fechaNacimientoUsuario form-label">Fecha de inicio de operaciones*</label>
+          <input type="date" class="entrada-formulario-registro form-control" id="fechaNacimientoUsuario" name="FechaDeNac" min="1824-01-01" required>
+          <span class="mensaje-error">Ingresa una fecha valida</span>
+        </div> 
+          
         <div class="contexto-y-entrada mb-3">
           <label for="contraseniaEmpresa" class="form-label">Contraseña*</label>
-          <input type="password" class="entrada-formulario-registro form-control" id="contraseniaEmpresa" required 
+          <input type="password" class="entrada-formulario-registro form-control" id="contraseniaEmpresa" name="Contrasena" required 
                  minlength="8" maxlength="12" placeholder="Contraseña">
+          <span class="mensaje-error">Ingresa una contraseña valida</span>
+        </div>
+          
+        <div class="contexto-y-entrada mb-3">
+          <label for="contraseniaEmpresa" class="form-label">Confirmar Contraseña*</label>
+          <input type="password" class="entrada-formulario-registro form-control" id="contraseniaEmpresa" name="CContrasena" required 
+                 minlength="8" maxlength="12" placeholder="Confirmar Contraseña">
           <span class="mensaje-error">Ingresa una contraseña valida</span>
         </div>
         
         <div class="contexto-y-entrada mb-3">
           <label for="ubicacionEmpresa" class="form-label">Ubicación*</label>
-          <select id="ubicacionEmpresa" class="entrada-formulario-registro form-control">
-            <option value="1" selected>México</option>
-            <option value="2">Estados Unidos</option>
-            <option value="3">Argentina</option>
-            <option value="4">Brasil</option>
-            <option value="5">Chile</option>
-            <option value="6">España</option>
-            <option value="7">Canada</option>
-            <option value="8">Francia</option>
-            <option value="9">Uruguay</option>
-            <option value="10">Otro</option>
+          <select id="ubicacionEmpresa" name="Localizacion" class="entrada-formulario-registro form-control">
+            <option value="México" selected>México</option>
+            <option value="Estados Unidos">Estados Unidos</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Brasil">Brasil</option>
+            <option value="Chile">Chile</option>
+            <option value="España">España</option>
+            <option value="Canada">Canada</option>
+            <option value="Francia">Francia</option>
+            <option value="Uruguay">Uruguay</option>
+            <option value="Otro">Otro</option>
           </select>
         </div> 
         
         <div class="contexto-y-entrada mb-3">
           <label for="giroEmpresa" class="form-label">Giro de la empresa*</label>
-          <select id="giroEmpresa" class="entrada-formulario-registro form-control">
-            <option value="1" selected>Desarrollo de software</option>
-            <option value="2">Públicidad</option>
-            <option value="3">Animación</option>
-            <option value="4">Entretenimiento</option>
-            <option value="5">Otro</option>
+          <select id="giroEmpresa" name="TipoDeEmpresa" class="entrada-formulario-registro form-control">
+            <option value="Desarrollo de software" selected>Desarrollo de software</option>
+            <option value="Públicidad">Públicidad</option>
+            <option value="Animación">Animación</option>
+            <option value="Entretenimiento">Entretenimiento</option>
+            <option value="Otro">Otro</option>
           </select>
         </div>
         
         <div class="contexto-y-entrada mb-3">
           <label for="documentoValidacionEmpresa" class="form-label"><i class="bi bi-file-pdf"></i> Documentación para validar empresa (.pdf)*</label>
-          <input type="file" class="entrada-formulario-registro form-control" id="archivoValidarEmpresa" required>
+          <input type="file" class="entrada-formulario-registro form-control" id="archivoValidarEmpresa" name="Verificacion" required>
           <span class="mensaje-error">Proporciona un archivo valido</span>
         </div>
       </div>

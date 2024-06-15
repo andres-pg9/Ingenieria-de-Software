@@ -102,8 +102,8 @@ boolean flag = true;
                 if(request.getParameter("FechaDeNac") != null){
 			FechaDeNac = request.getParameter("FechaDeNac");
 		}
-                if(request.getParameter("NombreUsuario") != null){
-			NombreUsuario = request.getParameter("NombreUsuario");
+                if(request.getParameter("NombreE") != null){
+			NombreUsuario = request.getParameter("NombreE");
 		}
                 if(request.getParameter("Contrasena") != null){
 			Contrasena = request.getParameter("Contrasena");
@@ -128,53 +128,53 @@ boolean flag = true;
 		if(Nombre == "" || Nombre.length()>60 || contieneNum(Nombre)){
                 request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
                 flag = false;
-                System.out.println("False nomp");
+                System.out.println("False nombre");
                 }
                 if(Apellido == "" || Apellido.length()>60 || contieneNum(Nombre)){
                 request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
                 flag = false;
-                System.out.println("False nomp");
+                System.out.println("False apellido");
                 }
                 if(Correo == "" || Correo.length()>60){
                 request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
                 flag = false;
-                System.out.println("False nomp");
+                System.out.println("False correo");
                 }
                 if(FechaDeNac == ""){
                 request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
                 flag = false;
-                System.out.println("False nomp");
+                System.out.println("False fecha");
                 }
                 if(NombreUsuario == "" || NombreUsuario.length()>60){
                 request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
                 flag = false;
-                System.out.println("False nomp");
+                System.out.println("False usuario");
                 }
                 if(Contrasena == "" || Contrasena.length()>60){
                 request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
                 flag = false;
-                System.out.println("False nomp");
+                System.out.println("False contra");
                 }
                 if(CContrasena == "" || CContrasena.length()>60){
                 request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
                 flag = false;
-                System.out.println("False nomp");
+                System.out.println("False ccontra");
                 }
                 if(NombreE == "" || NombreE.length()>60){
                 request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
                 flag = false;
-                System.out.println("False nomp");
+                System.out.println("False empresa");
                 }
                 if(Localizacion == "" || Localizacion.length()>60){
                 request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
                 flag = false;
-                System.out.println("False nomp");
+                System.out.println("False localizacion");
                 }
                 
                 if(TipoDeEmpresa == "" || TipoDeEmpresa.length()>60){
                 request.setAttribute("a3", "<font color='white'>(Ingresa un consultorio)</font>");
                 flag=false;
-                System.out.println("False sex");
+                System.out.println("False tipo");
                 }
                 
                 if(!Contrasena.equals(CContrasena)){
@@ -227,17 +227,17 @@ boolean flag = true;
                         sesion.setAttribute("prioridad","2");
                         
                         }else{
-                            RequestDispatcher rd = request.getRequestDispatcher("registrar.jsp"); 
+                            RequestDispatcher rd = request.getRequestDispatcher("registroEmpresa.html"); 
                             rd.forward(request,response);
                         }
 
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("inicioDesarrollador.jsp");
             st.close();
             con.close();
 
             }
             else{
-            RequestDispatcher rd = request.getRequestDispatcher("registrar.jsp"); 
+            RequestDispatcher rd = request.getRequestDispatcher("registroEmpresa.html"); 
              rd.forward(request,response);
             }
             

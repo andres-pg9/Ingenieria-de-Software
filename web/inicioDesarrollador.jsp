@@ -28,7 +28,7 @@
             </div>
             
             <!--Cuadro de búsqueda-->
-            <form class="d-flex w-50 justify-content-center" role="search" id="form-buscar">>
+            <form class="d-flex w-50 justify-content-center" role="search" id="form-buscar">
                 <div class="input-group w-75">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
                     <input class="form-control" type="search" placeholder="Buscar empresa o proyecto" aria-label="Search" aria-describedby="basic-addon1">
