@@ -148,7 +148,7 @@ boolean flag = true;
                     
                     
                 }else{
-                    RequestDispatcher rd = request.getRequestDispatcher("registroDesarrollador.html");
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                     rd.forward(request,response);
                 }
                 System.out.println("listo");
@@ -164,7 +164,7 @@ boolean flag = true;
             
             }
             else{
-            RequestDispatcher rd = request.getRequestDispatcher("registroDesarrollador.html"); 
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); 
              rd.forward(request,response);
             }
             }

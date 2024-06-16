@@ -1,10 +1,29 @@
+<%-- 
+    Document   : index
+    Created on : 15/06/2024, 03:19:14 PM
+    Author     : bruni
+--%>
+<%@page import="Servlets.BD"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html lang="es-MX">
+    <%
+        String co="\"";
+        String usr="id", prio="prioridad", nom="usuario";
+        HttpSession sesion=request.getSession();
+    %>
+    <% 
+        if(sesion.getAttribute(prio)=="2" || sesion.getAttribute(prio)=="1" ){
+            sesion.setAttribute("id","");
+            sesion.setAttribute("usuario","");
+            sesion.setAttribute("prioridad","");
+        }
+    %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

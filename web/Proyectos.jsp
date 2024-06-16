@@ -25,7 +25,7 @@
 <html lang="es-MX">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../images/logo.jpg">
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/reset.css">
@@ -103,7 +103,70 @@
             </div>
         </div>
     </nav>
-    
+    <section class="inicio-empresas">
+    <section class="proyectos">
+        <form action="" method="" id="form-crear-proyecto">
+          <div class="fieldset-form">
+            <div class="titulo-botones">
+              <input type="text" class="entrada-texto-principal" placeholder="Agregar un titulo" id="tituloProyecto"
+                     required maxlength="45" minlength="1" autofocus
+                     pattern="^(?=.{1,45}$)[a-zA-ZáéíóúÁÉÍÓÚñÑ.0-9]+(?:\s[a-zA-ZáéíóúÁÉÍÓÚ.0-9]+)*$">
+              
+              <div class="botones-nuevo-proyecto">
+                <span id="botonTexto">
+                  <img src="../images/texto.png" alt="" class="icono-boton">
+                </span>
+                <span id="botonArchivo">
+                  <img src="../images/clip.png" alt="" class="icono-boton">
+                </span>
+                <span id="botonImagen">
+                  <img src="../images/imagen.png" alt="" class="icono-boton">
+                </span>
+                <span id="botonEnlace">
+                  <img src="../images/enlace.png" alt="" class="icono-boton">
+                </span>
+              </div>
+            </div>
+            
+            <textarea id="descripcionProyecto" placeholder="Agregar una descripción:"
+                      class="descripcion-proyecto" required minlength="1" maxlength="45"></textarea>
+
+            <div class="tecnologias-ubicacion">
+              <div class="contenedor-seleccionadores">
+                <label for="tecnologiasUsar">Tecnologias a utilizar:</label>
+                <select id="tecnologiasUsar" class="entrada-selector">
+                  <option value="" selected></option>
+                </select>
+              </div>
+
+              <div>
+                <span class="ubicacion">
+                  <img src="../images/ubicacion.png" alt="" class="icono-boton">
+                  <input type="text" readonly="true" placeholder="Ubicación" class="entrada-texto-principal">
+                </span>
+              </div>
+            </div>
+
+            <div class="contenedor-seleccionadores">
+              <label for="selectorColaboradores">Número de colaboradores:</label>
+              <select id="selectorColaboradores" class="entrada-selector selector-colaboradores">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+
+              <input type="submit" value="Publicar proyecto" class="btn-publicar">
+            </div>
+          </div>
+        </form>
+      </section>
 <%
             
             int i = 0;
@@ -113,8 +176,8 @@
             Statement st=con.createStatement();
            
            
-            PreparedStatement stmt=con.prepareStatement("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos");
-            ResultSet rs=stmt.executeQuery("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos");
+            PreparedStatement stmt=con.prepareStatement("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos WHERE Usuario_id_usuarios='" + sesion.getAttribute(prio) + "'");
+            ResultSet rs=stmt.executeQuery("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos WHERE Usuario_id_usuarios='" + sesion.getAttribute(prio) + "'");
             
             
             
@@ -141,6 +204,7 @@
      
                 
                 out.println(
+                        "<section class=\"proyectos\"> "+
                         "<form method=\"post\" action=\"Colaborar\" id=\"form-crear-proyecto\">" +
                         "<div class=\"fieldset-form\">" +
                         "<div class=\"img-proyecto-fecha\">" +
@@ -158,21 +222,9 @@
                         " <br><p class=\"visualizar-descripcion-proyecto\"> Numero de colaboradores:   " + rs.getString("NoColab") + "</p>" +
                         "</div><br>" +
                         "</div>" +
-                        "</div>" 
+                        "</div></section>" 
                         );
-                        if(sesion.getAttribute(prio)=="1"){
-                            out.println(
-                                "<select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
-                                "<option value=\""+ idp +"\">"+ idp +"</option>" +
-                                "</select>" +
-                                "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Colaborar\">" +
-                                "</form>" 
-                            );
-                        }else{
-                            out.println(
-                                "</form>" 
-                            );
-                        }
+                        
 
                         
                 i++;
@@ -199,9 +251,8 @@
        %>
 
               
-            
+    </section>  
 
-    <script src="../scripts/registroDesarrollador.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

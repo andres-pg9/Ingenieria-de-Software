@@ -98,4 +98,231 @@
 }
 
 /* Formulario para empresa */
+.btn-buscar {
+  margin: 0 0 0 20px;
+}
 
+/* Estilos para el inicio de las empresas */
+.inicio-empresas {
+  /* Contenedor de las publicaciones y del espacio de nuevo proyecto */
+  margin: 150px 0 0 0;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.proyectos {
+  /* Contenedor de publicar proyecto y de mostrar proyectos */
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.fieldset-form {
+  /* Borde externo del formulario */
+  border: 2px solid black;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.titulo-botones {
+  /* Conentedor de el titulo del proyecto y los botones */
+  display: flex;
+  justify-content: space-between;
+}
+
+.entrada-texto-principal {
+  background: none;
+  border: none;
+  width: 40%;
+  padding: 5px;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+.entrada-texto-principal:focus {
+  /* Cuando el usuario se posiciona sobre el campo de entrada */
+  outline: 0;
+  border-bottom: 2px solid black;
+}
+
+.entrada-texto-principal::placeholder {
+  font-weight: bold;
+  opacity: 1;
+  color: black;
+}
+
+.botones-nuevo-proyecto {
+  /* Contenedor de los botones de nuevo proyecto */
+  width: 60%;
+  align-self: center;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.icono-boton {
+  /* Icono de los botones */
+  width: 20px;
+  height: 20px;
+}
+
+.descripcion-proyecto {
+  /* Área de texto para la descripción del proyecto */
+  resize: none;
+  margin: 5px 0;
+  width: 80%;
+  padding: 10px;
+  background: none;
+  border: 2px solid black;
+  box-sizing: border-box;
+}
+
+.tecnologias-ubicacion {
+  /* Contenedor de tecnologías y de mostrar ubicación */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contenedor-seleccionadores {
+  /* Contenedor para los seleccionadores de número de colaboradores y tecnologías a usar */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.contenedor-seleccionadores > label {
+  /* Texto que acompaña a los seleccionadores */
+  font-weight: bold;
+}
+
+.entrada-selector {
+  /* Entrada de selectores */
+  padding: 2px;
+  border: 2px solid black;
+}
+
+.ubicacion > .entrada-texto-principal {
+  /* Texto de la ubicación de la empresa */
+  text-align: center;
+}
+
+.selector-colaboradores {
+  /* Selector de número de colaboradores */
+  width: 21%;
+}
+
+.btn-publicar {
+  /* Botón para enviar el formulario */
+  align-self: flex-end;
+  width: 25%;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  box-shadow: 4px 4px 1px black;
+  transition: 0.5s;
+}
+
+.btn-publicar:hover {
+  /* Animación para el botón de enviar el formulario */
+  transform: translateY(-2.5px);
+  background: lightgray;  
+}
+
+.img-proyecto-fecha {
+  /* Contenedor de imagen, titulo, descripción y fecha de punlicación */
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  gap: 10px;
+  align-items: center;
+}
+
+.imagen-empresa {
+  /* Imagen de la empresa */
+  width: 140px;
+  height: 140px;
+  align-self: flex-start;
+}
+
+.titulo-descripcion {
+  /* Contenedor para mostrar el titulo, descripción y lugar del proyecto */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.visualizar-titulo-proyecto {
+  /* Titulo del proyecto */
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.titulo-descripcion > .ubicacion {
+  /* Contenedor de la ubicación */
+  display: flex;
+  gap: 5px;
+}
+
+.ubicacion > p {
+  /* Contenido de la ubicación */
+  align-self: center;
+  margin-right: 20px;
+}
+
+.tecnologias-usadas-y-botones {
+  /* Contenedor de las tecnologias a usar y de ls botones */
+  display: flex;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.tecnologias-usadas {
+  /* Contenedor de las tecnologias usadas */
+  width: 60%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tecnologia {
+  /* Espacio para mostrar cada tecnologiá */
+  border-radius: 20px;
+  padding: 5px;
+  border: 1px solid black;
+  box-shadow: 3px 2px 3px black;
+}
+
+.contenedor-botones {
+  /* Botones de acción */
+  width: 40%;
+  align-self: flex-end;
+  text-align: center;
+}
+
+.btn-accion-proyecto {
+  /* Botón */
+  margin-right: 20px;
+  width: 90px;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 2px 2px 1px black;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+
+.btn-accion-proyecto:first-child:hover {
+  /* Animación del botón */
+  transform: translateY(-2.5px);
+  background: lightgray;
+}
+
+.btn-accion-proyecto:nth-child(2):hover {
+  /* Animación del botón */
+  transform: translateY(-2.5px);
+  background: lightcyan;
+}
