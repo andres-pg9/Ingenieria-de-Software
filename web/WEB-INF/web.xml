@@ -24,6 +24,22 @@
         <servlet-name>Colaborar</servlet-name>
         <servlet-class>Servlets.Colaborar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminarColab</servlet-name>
+        <servlet-class>Servlets.EliminarColab</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AceptarColab</servlet-name>
+        <servlet-class>Servlets.AceptarColab</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RechazarColab</servlet-name>
+        <servlet-class>Servlets.RechazarColab</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarProyecto</servlet-name>
+        <servlet-class>Servlets.EliminarProyecto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -47,6 +63,22 @@
     <servlet-mapping>
         <servlet-name>Colaborar</servlet-name>
         <url-pattern>/Colaborar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarColab</servlet-name>
+        <url-pattern>/EliminarColab</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AceptarColab</servlet-name>
+        <url-pattern>/AceptarColab</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RechazarColab</servlet-name>
+        <url-pattern>/RechazarColab</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarProyecto</servlet-name>
+        <url-pattern>/EliminarProyecto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

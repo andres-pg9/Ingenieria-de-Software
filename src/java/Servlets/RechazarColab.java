@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  * @author bruni
  */
 @WebServlet(name = "Registrar", urlPatterns = {"/Registrar"})
-public class Colaborar extends HttpServlet {
+public class RechazarColab extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -99,52 +99,43 @@ boolean flag = true;
                 System.out.println("Obteniendo datos...");
                 System.out.println("Step 1");
                 HttpSession sesion=request.getSession();
-                    
-                System.out.println("Iniciando incercion");
-                    System.out.println("Buscando colaboraciones registrados");
-                        
-                        PreparedStatement stmt=con.prepareStatement("SELECT idColaboracion FROM Colaboracion WHERE Usuario_id_Usuarios='" + sesion.getAttribute("id") + "' and idColaboracion='" + colab + "'");
-                        ResultSet rs=stmt.executeQuery("SELECT idColaboracion FROM Colaboracion WHERE Usuario_id_Usuarios='" + sesion.getAttribute("id") + "' and idColaboracion='" + colab + "'");
-                        while(rs.next()){
-                        idp = rs.getString("idColaboracion");
-                        prov1++;
-                        }
-                        if(prov1>0){
-                            System.out.println(prov1);
+                     
+                    System.out.println("ID colab   " + colab);
+                       
+                        if(colab.equals("")){
+                            request.setAttribute("a1", "<font color='white'>(Ingresa un correo no registrado)</font>");
                             flag=false;
                         }
-                        
-                        System.out.println(flag);
                         if(flag==true){
                         
-                        System.out.println("Iniciando incercion");
+                        System.out.println("Aceptando colaboracion");
                         
-                        st.executeUpdate("INSERT INTO Colaboracion(Solicitud, Aprobacion, Proyectos_idProyectos, Usuario_id_usuarios) VALUES ('" + sesion.getAttribute("usuario") +"', '0', '" + colab +"', '" + sesion.getAttribute("id") +"')");
+                        st.executeUpdate("UPDATE Colaboracion SET Aprobacion ='2' WHERE idColaboracion='" + colab + "'");
                         //0 Solicitado 1 Aprobado 2 Denegado
                         
                         }else{
-                            RequestDispatcher rd = request.getRequestDispatcher("inicioDesarrollador.jsp"); 
+                            RequestDispatcher rd = request.getRequestDispatcher("Solicitudes.jsp"); 
                             rd.forward(request,response);
                         }
 
-            response.sendRedirect("Colaboracion.jsp");
+            response.sendRedirect("Solicitudes.jsp");
             st.close();
             con.close();
 
             }
             else{
-            RequestDispatcher rd = request.getRequestDispatcher("inicioDesarrollador.jsp"); 
+            RequestDispatcher rd = request.getRequestDispatcher("Colaboracion.jsp"); 
              rd.forward(request,response);
             }
             
             }catch (SQLException ex) {
-			Logger.getLogger(Colaborar.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(RechazarColab.class.getName()).log(Level.SEVERE, null, ex);
 		} catch (ClassNotFoundException ex) {
-            Logger.getLogger(Colaborar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RechazarColab.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            Logger.getLogger(Colaborar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RechazarColab.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(Colaborar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RechazarColab.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
