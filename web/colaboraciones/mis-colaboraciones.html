@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../images/logo.jpg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css"
+        rel="stylesheet"/>
+  <link rel="stylesheet" href="../styles/main.css">
+  <title>Mis colaboraciones</title>
+</head>
+<body>
+<!-- Barra de navegación -->
+<nav class="navbar navbar-dark bg-dark fixed-top">
+  <div class="container-fluid d-flex justify-content-between">
+    <!--Logo-->
+    <div class="d-flex align-items-center">
+      <img src="../images/logo.jpg" alt="" class="logo">
+    </div>
+
+    <!--Cuadro de búsqueda-->
+    <form class="d-flex w-50 justify-content-center" role="search" id="form-buscar">
+      <div class="input-group w-75">
+        <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+        <input class="form-control" type="search" placeholder="Buscar empresa o proyecto" aria-label="Search"
+               aria-describedby="basic-addon1">
+      </div>
+      <button class="btn btn-secondary" type="submit">Buscar</button>
+    </form>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+            aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!--Menú Desplegable de opciones-->
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+         aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menú</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"> <i class="bi bi-house-door-fill"></i> Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-person-circle"></i> Mi Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-pencil-square"></i> Proyectos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-chat-dots"></i> Mensajes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-file-earmark-medical"></i> Solicitudes de colaboración</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Contenido principal -->
+<main class="colabs">
+  <form>
+    <fieldset>
+      <legend>Mis colaboraciones</legend>
+      <div style="padding-bottom: 25px;">
+        <section class="colab-wrapper">
+          <div class="colab-content">
+            <div class="colab-business">
+              <h2>Mi empresa</h2>
+            </div>
+            <div>
+              <div class="colab-description">
+                <h1>Proyecto <span class='project-title'>xxxx</span></h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, amet at cumque cupiditate dolor
+                  et
+                  facere id maxime reprehenderit sint soluta ut veniam voluptatem. Consequuntur fuga perferendis
+                  provident
+                  recusandae tempore.
+                </p>
+              </div>
+              <table>
+                <thead>
+                <tr>
+                  <th>Nombre del desarrollador</th>
+                  <th>Verificación</th>
+                  <th>Estatus</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Giacomo Guillizzoni</td>
+                  <td>
+                    <svg width="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                         stroke-width="1.5"
+                         stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                    </svg>
+                  </td>
+                  <td>Rechazado</td>
+                </tr>
+                <tr>
+                  <td>Marco Botton</td>
+                  <td>
+                    <svg width="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                         stroke-width="1.5"
+                         stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/>
+                    </svg>
+                  </td>
+                  <td>Aceptado</td>
+                </tr>
+                <tr>
+                  <td>Mariah Maclachlan</td>
+                  <td>
+                    <svg width="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                         stroke-width="1.5"
+                         stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                    </svg>
+                  </td>
+                  <td>Rechazado</td>
+                </tr>
+                <tr>
+                  <td>Valerie Liberty</td>
+                  <td>
+                    <svg width="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                         stroke-width="1.5"
+                         stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                    </svg>
+                  </td>
+                  <td>Pendiente</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="colab-controls">
+            <button type="button" class="open-dialog">Cerrar colaboraciones</button>
+            <button type="button">Guardar</button>
+          </div>
+        </section>
+      </div>
+      <section class="colab-wrapper">
+        <div class="colab-content">
+          <div class="colab-business">
+            <h2>Mi empresa</h2>
+          </div>
+          <div>
+            <div class="colab-description">
+              <h1>Proyecto <span class='project-title'>xxxx</span></h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, amet at cumque cupiditate dolor et
+                facere id maxime reprehenderit sint soluta ut veniam voluptatem. Consequuntur fuga perferendis provident
+                recusandae tempore.
+              </p>
+            </div>
+            <table>
+              <thead>
+              <tr>
+                <th>Nombre del desarrollador</th>
+                <th>Verificación</th>
+                <th>Estatus</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Valentina Rojas</td>
+                <td>
+                  <svg width="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                       stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/>
+                  </svg>
+                </td>
+                <td>Aceptado</td>
+              </tr>
+              <tr>
+                <td>Mateo Hernández</td>
+                <td>
+                  <svg width="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                       stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/>
+                  </svg>
+                </td>
+                <td>Aceptado</td>
+              </tr>
+              <tr>
+                <td>Nicolás Torres</td>
+                <td>
+                  <svg width="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                       stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                  </svg>
+                </td>
+                <td>Rechazado</td>
+              </tr>
+              <tr>
+                <td>Luna Castillo</td>
+                <td>
+                  <svg width="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                       stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                  </svg>
+                </td>
+                <td>Pendiente</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="colab-controls">
+          <button type="button" class="open-dialog">Cerrar colaboraciones</button>
+          <button type="button">Guardar</button>
+        </div>
+      </section>
+    </fieldset>
+  </form>
+  <dialog class="colab-dialog">
+    <div>
+      <h3>Cerrar colaboración</h3>
+      <p>¿Está seguro de que quiere cerrar las colaboraciones para el proyecto <span>xxxx</span>? No se podrán recibir
+        más
+        solicitudes.
+      </p>
+    </div>
+    <form>
+      <label for="password">Por seguridad, ingrese su contraseña</label>
+      <input type="text" id="password">
+    </form>
+    <div class="dialog-controls">
+      <button type="button" class="close-dialog">
+        Cerrar solicitudes
+      </button>
+      <button type="button" class="close-dialog">Cancelar</button>
+    </div>
+  </dialog>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous">
+</script>
+<script>
+  const dialog = document.querySelector(".colab-dialog")
+  const openButtons = document.querySelectorAll(".open-dialog")
+  const closeButtons = document.querySelectorAll(".close-dialog")
+
+  // Tenemos dos botones que abren el modal por lo que tenemos que asignarle a ambos la capacidad de abrir el modal
+  for (const btn of openButtons)
+    btn.addEventListener('click', () => dialog.showModal())
+
+  // Tenemos dos botones que cierran el modal por lo que tenemos que asignarle a ambos la capacidad de cerrar el modal
+  for (const btn of closeButtons)
+    btn.addEventListener('click', () => dialog.close())
+</script>
+</body>
+</html>

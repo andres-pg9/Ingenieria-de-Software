@@ -99,3 +99,139 @@
 
 /* Formulario para empresa */
 
+/* Mis colaboraciones */
+.colabs {
+  margin-top: 76px;
+  position: relative;
+  display: grid;
+  place-content: center;
+  min-height: calc(100dvh - 76px);
+
+  fieldset {
+    padding: 32px;
+    border: 2px solid black;
+
+    legend {
+      float: unset;
+      width: unset;
+      padding: unset;
+      margin-bottom: unset;
+    }
+  }
+
+  .colab-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    border: 2px solid black;
+
+    .colab-content {
+      display: flex;
+      gap: 16px;
+
+      .colab-business {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        border: 2px solid black;
+        height: 100px;
+        width: 100px;
+
+        h2 {
+          font-size: 14px;
+        }
+      }
+
+      table {
+        margin-top: 24px;
+        width: 100%;
+
+        thead {
+          background-color: lightgray;
+        }
+
+        tbody > tr:nth-child(odd) {
+          background-color: #eeee;
+        }
+
+        td, th {
+          border: 2px solid black;
+          padding: 4px;
+        }
+      }
+
+      .colab-description {
+        max-width: 100ch;
+
+        h1 {
+          margin-top: -11px;
+        }
+
+        .project-title {
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .colab-controls {
+      display: flex;
+      gap: 8px;
+      margin-left: auto;
+      margin-top: 16px;
+    }
+  }
+
+  legend {
+    font-size: 14px;
+  }
+
+  form {
+    padding: 16px;
+  }
+
+  .colab-dialog {
+    border-radius: 10px;
+    text-align: center;
+    position: absolute;
+    inset: 0;
+
+    &::backdrop {
+      background-color: black;
+      opacity: 70%;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    p {
+      max-width: 50ch;
+      margin: auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .dialog-controls {
+      border-top: 2px solid black;
+      background-color: black;
+      gap: 2px;
+      display: flex;
+      margin: 0 -16px;
+      margin-bottom: -16px;
+
+      button {
+        flex: 1;
+        border: none;
+        padding: 8px;
+      }
+    }
+  }
+}
+/* Mis colaboraciones Fin*/
