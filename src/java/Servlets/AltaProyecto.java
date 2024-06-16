@@ -78,105 +78,42 @@ public class AltaProyecto extends HttpServlet {
             try{
                 
                 String Nombre = "";
-                String Apellido = "";
-                String Correo = "";
-                String FechaDeNac = "";
-                String NombreUsuario = "";
-                String Contrasena = "";
-                String CContrasena = "";
-                String Antecedentes = "";
                 String Descripcion = "";
-                String Genero = "";
+                String Tecnologias = "";
+                String Progreso = "";
+                String Perfil = "";
+                String NoColab = "";
+                String Etiquetas = "";
                 
 boolean flag = true;
                 if(request.getParameter("Nombre") != null){
 			Nombre = request.getParameter("Nombre");
 		}
-                if(request.getParameter("Apellido") != null){
-			Apellido = request.getParameter("Apellido");
-		}
-                if(request.getParameter("Correo") != null){
-			Correo = request.getParameter("Correo");
-		}
-                if(request.getParameter("FechaDeNac") != null){
-			FechaDeNac = request.getParameter("FechaDeNac");
-		}
-                if(request.getParameter("NombreUsuario") != null){
-			NombreUsuario = request.getParameter("NombreUsuario");
-		}
-                if(request.getParameter("Contrasena") != null){
-			Contrasena = request.getParameter("Contrasena");
-		}
-                if(request.getParameter("CContrasena") != null){
-			CContrasena = request.getParameter("CContrasena");
-		}
-                if(request.getParameter("Antecedentes") != null){
-			Antecedentes = request.getParameter("Antecedentes");
-		}
                 if(request.getParameter("Descripcion") != null){
 			Descripcion = request.getParameter("Descripcion");
 		}
-                if(request.getParameter("Genero") != null){
-			Genero = request.getParameter("Genero");
+                if(request.getParameter("Tecnologias") != null){
+			Tecnologias = request.getParameter("Tecnologias");
 		}
+                if(request.getParameter("Progreso") != null){
+			Progreso = request.getParameter("Progreso");
+		}
+                if(request.getParameter("Perfil") != null){
+			Perfil = request.getParameter("Perfil");
+		}
+                if(request.getParameter("NoColab") != null){
+			NoColab = request.getParameter("NoColab");
+		}
+                if(request.getParameter("Etiquetas") != null){
+			Etiquetas = request.getParameter("Etiquetas");
+                }
                 
+                if(Progreso == "" || Progreso.length()>3 || !contieneNum(Progreso)){
+                request.setAttribute("a1", "<font color='white'>(Ingresa un valor validoo)</font>");
+                flag = false;
+                System.out.println("False nomp");
+                }
 		//revisar que sean validos
-		if(Nombre == "" || Nombre.length()>60 || contieneNum(Nombre)){
-                request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
-                flag = false;
-                System.out.println("False nomp");
-                }
-                if(Apellido == "" || Apellido.length()>60 || contieneNum(Nombre)){
-                request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
-                flag = false;
-                System.out.println("False nomp");
-                }
-                if(Correo == "" || Correo.length()>60){
-                request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
-                flag = false;
-                System.out.println("False nomp");
-                }
-                if(FechaDeNac == ""){
-                request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
-                flag = false;
-                System.out.println("False nomp");
-                }
-                if(NombreUsuario == "" || NombreUsuario.length()>60){
-                request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
-                flag = false;
-                System.out.println("False nomp");
-                }
-                if(Contrasena == "" || Contrasena.length()>60){
-                request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
-                flag = false;
-                System.out.println("False nomp");
-                }
-                if(CContrasena == "" || CContrasena.length()>60){
-                request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
-                flag = false;
-                System.out.println("False nomp");
-                }
-                if(Antecedentes == "" || Antecedentes.length()>60){
-                request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
-                flag = false;
-                System.out.println("False nomp");
-                }
-                if(Descripcion == "" || Descripcion.length()>60){
-                request.setAttribute("a1", "<font color='white'>(Ingresa un paciente o formato valido)</font>");
-                flag = false;
-                System.out.println("False nomp");
-                }
-                
-                if(Genero == ""){
-                request.setAttribute("a3", "<font color='white'>(Ingresa un consultorio)</font>");
-                flag=false;
-                System.out.println("False sex");
-                }
-                
-                if(!Contrasena.equals(CContrasena)){
-                request.setAttribute("a1", "<font color='white'>(Ingresa un nombre valido)</font>");
-                flag=false;
-                }
                 
                 System.out.println(flag);
                 
@@ -191,12 +128,7 @@ boolean flag = true;
                     st2=con.createStatement();
                 System.out.println("Obteniendo datos...");
                 System.out.println("Step 1");
-                    PreparedStatement stmt=con.prepareStatement("SELECT id_Usuarios FROM Usuario WHERE NombreUsuario='" + NombreUsuario + "' or correo='" +  Correo + "'");
-                    ResultSet rs=stmt.executeQuery("SELECT id_Usuarios FROM Usuario WHERE NombreUsuario='" + NombreUsuario + "' or correo='" +  Correo + "'");
-                    while(rs.next()){
-                    idp = rs.getString("id_Usuarios");
-                    prov1++;
-                    }
+                    
                 System.out.println("Iniciando incercion");
                     System.out.println("Buscando pacientes registrados");
                         if(prov1==0 || idp.equals("")){
@@ -207,33 +139,22 @@ boolean flag = true;
                         
                         System.out.println("Iniciando incercion");
                         
-                        st.executeUpdate("INSERT INTO Proyecto(Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas) VALUES ('', '', '', '','', '', '', '')");
-                        stmt=con.prepareStatement("SELECT id_Usuarios FROM Usuario WHERE correo='" +  Correo + "'");
-                        rs=stmt.executeQuery("SELECT id_Usuarios FROM Usuario WHERE correo='" +  Correo + "'");
-                        while(rs.next()){
-                        idp = rs.getString("id_Usuarios");
-                        prov1++;
-                        }
-                        st2.executeUpdate("INSERT INTO DatosDev(Antecedentes, Descripcion, Genero_idGenero, Usuario_id_usuarios) VALUES ('" + Antecedentes +"', '" + Descripcion +"', '" + Genero +"', '" + idp +"')");
-                        
                         HttpSession sesion=request.getSession();
-                        
-                        sesion.setAttribute("id",idp);
-                        sesion.setAttribute("usuario",NombreUsuario);
-                        sesion.setAttribute("prioridad","1");
+                            System.out.println("-------------------------ASD " + Etiquetas);
+                        st.executeUpdate("INSERT INTO Proyectos(Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas) VALUES ('" + Nombre +"', '" + Descripcion +"', '" + Tecnologias +"', '" + Progreso +"','" + Perfil +"', '" + NoColab +"', '" + sesion.getAttribute("id") +"', '" + Etiquetas +"')");
                         
                         }else{
-                            RequestDispatcher rd = request.getRequestDispatcher("registrar.jsp"); 
+                            RequestDispatcher rd = request.getRequestDispatcher("Proyectos.jsp"); 
                             rd.forward(request,response);
                         }
 
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("Proyectos.jsp");
             st.close();
             con.close();
 
             }
             else{
-            RequestDispatcher rd = request.getRequestDispatcher("registrar.jsp"); 
+            RequestDispatcher rd = request.getRequestDispatcher("Proyectos.jsp"); 
              rd.forward(request,response);
             }
             

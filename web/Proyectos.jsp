@@ -26,9 +26,9 @@
 <head>
     <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../images/logo.jpg">
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="icon" type="image/x-icon" href="./images/logo.jpg">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/reset.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
     <title>Inicio</title>
@@ -40,7 +40,7 @@
         <div class="container-fluid d-flex justify-content-between">
             <!--Logo-->
             <div class="d-flex align-items-center">
-                <img src="../images/logo.jpg" alt="" class="logo">
+                <img src="./images/logo.jpg" alt="" class="logo">
             </div>
             
             <!--Cuadro de búsqueda-->
@@ -105,51 +105,76 @@
     </nav>
     <section class="inicio-empresas">
     <section class="proyectos">
-        <form action="" method="" id="form-crear-proyecto">
+        <form method="post" action="AltaProyecto" id="form-crear-proyecto">
           <div class="fieldset-form">
             <div class="titulo-botones">
               <input type="text" class="entrada-texto-principal" placeholder="Agregar un titulo" id="tituloProyecto"
-                     required maxlength="45" minlength="1" autofocus
+                     name="Nombre" required maxlength="45" minlength="1" autofocus
                      pattern="^(?=.{1,45}$)[a-zA-ZáéíóúÁÉÍÓÚñÑ.0-9]+(?:\s[a-zA-ZáéíóúÁÉÍÓÚ.0-9]+)*$">
               
               <div class="botones-nuevo-proyecto">
                 <span id="botonTexto">
-                  <img src="../images/texto.png" alt="" class="icono-boton">
+                  <img src="./images/texto.png" alt="" class="icono-boton">
                 </span>
                 <span id="botonArchivo">
-                  <img src="../images/clip.png" alt="" class="icono-boton">
+                  <img src="./images/clip.png" alt="" class="icono-boton">
                 </span>
                 <span id="botonImagen">
-                  <img src="../images/imagen.png" alt="" class="icono-boton">
+                  <img src="./images/imagen.png" alt="" class="icono-boton">
                 </span>
                 <span id="botonEnlace">
-                  <img src="../images/enlace.png" alt="" class="icono-boton">
+                  <img src="./images/enlace.png" alt="" class="icono-boton">
                 </span>
               </div>
             </div>
             
-            <textarea id="descripcionProyecto" placeholder="Agregar una descripción:"
+            <textarea id="descripcionProyecto" name="Descripcion" placeholder="Agregar una descripción:"
                       class="descripcion-proyecto" required minlength="1" maxlength="45"></textarea>
 
             <div class="tecnologias-ubicacion">
               <div class="contenedor-seleccionadores">
                 <label for="tecnologiasUsar">Tecnologias a utilizar:</label>
-                <select id="tecnologiasUsar" class="entrada-selector">
-                  <option value="" selected></option>
-                </select>
+                <textarea id="tecnologiasUsar" name="Tecnologias" placeholder="Agregar las tecnologias a usar"
+                      class="descripcion-proyecto" required minlength="1" maxlength="45"></textarea>
               </div>
 
-              <div>
-                <span class="ubicacion">
-                  <img src="../images/ubicacion.png" alt="" class="icono-boton">
-                  <input type="text" readonly="true" placeholder="Ubicación" class="entrada-texto-principal">
-                </span>
+              <div class="contenedor-seleccionadores">
+                <label for="tecnologiasUsar">Perfil del colaborador:</label>
+                <textarea id="tecnologiasUsar" name="Perfil" placeholder="Agregar el perfil de desarrollador a buscar"
+                      class="descripcion-proyecto" required minlength="1" maxlength="45"></textarea>
               </div>
             </div>
 
             <div class="contenedor-seleccionadores">
+              <label for="selectorColaboradores">Etiqueta del proyecto:</label>
+              <select id="selectorColaboradores" name="Etiquetas" class="entrada-selector selector-colaboradores">
+            
+              
+              <%
+              int i = 0;
+            
+                Connection con=BD.iniciar();
+                PreparedStatement stmt=con.prepareStatement("SELECT idEtiquetas, Nombre FROM Etiquetas");
+                ResultSet rs=stmt.executeQuery("SELECT idEtiquetas, Nombre FROM Etiquetas");
+
+                while(rs.next()){
+                
+                    out.println(
+                            "<option value=\"" + rs.getString("idEtiquetas") + "\">" + rs.getString("Nombre") + "</option>"
+                    );
+                
+                }
+              %>
+              </select>
+              <div class="contenedor-seleccionadores">
+                <label for="tecnologiasUsar">Progreso:</label>
+                <textarea id="tecnologiasUsar" name="Progreso" placeholder="Agregar el perfil de desarrollador a buscar"
+                      class="descripcion-proyecto" required minlength="1" maxlength="45"></textarea>
+              </div>
+            </div>
+            <div class="contenedor-seleccionadores">
               <label for="selectorColaboradores">Número de colaboradores:</label>
-              <select id="selectorColaboradores" class="entrada-selector selector-colaboradores">
+              <select id="selectorColaboradores" name="NoColab" class="entrada-selector selector-colaboradores">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3" selected>3</option>
@@ -169,19 +194,13 @@
       </section>
 <%
             
-            int i = 0;
             
-            Connection con=BD.iniciar();
             
             Statement st=con.createStatement();
            
            
-            PreparedStatement stmt=con.prepareStatement("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos WHERE Usuario_id_usuarios='" + sesion.getAttribute(prio) + "'");
-            ResultSet rs=stmt.executeQuery("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos WHERE Usuario_id_usuarios='" + sesion.getAttribute(prio) + "'");
-            
-            
-            
-            
+             stmt=con.prepareStatement("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos WHERE Usuario_id_usuarios='" + sesion.getAttribute(prio) + "'");
+             rs=stmt.executeQuery("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos WHERE Usuario_id_usuarios='" + sesion.getAttribute(prio) + "'");
             
             while(rs.next()){
             String etiqueta="", empresa="";
@@ -208,7 +227,7 @@
                         "<form method=\"post\" action=\"Colaborar\" id=\"form-crear-proyecto\">" +
                         "<div class=\"fieldset-form\">" +
                         "<div class=\"img-proyecto-fecha\">" +
-                        "<img src=\"../images/logo.jpg\" alt=\"\" class=\"imagen-empresa\">" +
+                        "<img src=\"./images/logo.jpg\" alt=\"\" class=\"imagen-empresa\">" +
                         "<br><div class=\"titulo-descripcion\">" +
                         "<br><p class=\"visualizar-titulo-proyecto\">   Nombre:   " + rs.getString("Nombre") + "</p>" +
                         " <br><p class=\"visualizar-titulo-proyecto\"> Empresa:    " + empresa + "</p>" +
@@ -233,7 +252,7 @@
            out.println("<section class=\"proyectos\"> "
                    + "<form action=\"\" method=\"\" id=\"form-crear-proyecto\"> "
                    + "<div class=\"fieldset-form\"> "
-                   + "<img src=\"../images/logo.jpg\" alt=\"\" class=\"imagen-empresa\"> "
+                   + "<img src=\"./images/logo.jpg\" alt=\"\" class=\"imagen-empresa\"> "
                    + "<br><div class=\"titulo-descripcion\">"
                    + "<br><p class=\"visualizar-titulo-proyecto\">  No hay proyectos disponibles  </p>" 
                    + "</div>" +

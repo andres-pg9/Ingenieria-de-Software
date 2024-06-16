@@ -110,7 +110,7 @@ boolean flag = true;
                         
                         System.out.println("Iniciando incercion");
                         
-                        st.executeUpdate("INSERT INTO Colaboracion(Solicitud, Aprobacion, Proyecto_idProyectos, Usuario_id_usuarios) VALUES ('" + sesion.getAttribute("usuario") +"', '0', '" + colab +"', '" + sesion.getAttribute("id") +"')");
+                        st.executeUpdate("INSERT INTO Colaboracion(Solicitud, Aprobacion, Proyectos_idProyectos, Usuario_id_usuarios) VALUES ('" + sesion.getAttribute("usuario") +"', '0', '" + colab +"', '" + sesion.getAttribute("id") +"')");
                         //0 Solicitado 1 Aprobado 2 Denegado
                         
                         }else{

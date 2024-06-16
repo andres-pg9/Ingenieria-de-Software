@@ -113,49 +113,40 @@
             Statement st=con.createStatement();
            
            
-            PreparedStatement stmt=con.prepareStatement("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos");
-            ResultSet rs=stmt.executeQuery("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos");
-            
-            
+            PreparedStatement stmt=con.prepareStatement("SELECT idColaboracion, Aprobacion, Proyectos_idProyectos FROM Colaboracion");
+            ResultSet rs=stmt.executeQuery("SELECT idColaboracion, Aprobacion, Proyectos_idProyectos FROM Colaboracion");
+
             
             
             
             while(rs.next()){
-            String etiqueta="", empresa="";
-            String ie = rs.getString("Etiquetas_idEtiquetas");
-            String iu = rs.getString("Usuario_id_usuarios");
-            String idp = rs.getString("idProyectos");
-            PreparedStatement stmt2=con.prepareStatement("SELECT Nombre FROM Etiquetas WHERE idEtiquetas='" + ie + "'" );
-            ResultSet rs2=stmt2.executeQuery("SELECT Nombre FROM Etiquetas WHERE idEtiquetas='" + ie + "'" );
-            
-            while(rs2.next()){
-                etiqueta = rs2.getString("Nombre");
+            String aprb = rs.getString("Aprobacion");
+            String idpr = rs.getString("Proyectos_idProyectos");
+            PreparedStatement stmt2=con.prepareStatement("SELECT Nombre FROM Proyectos JOIN Colaboracion WHERE Proyectos_idProyectos='" + idpr + "'");
+            ResultSet rs2=stmt2.executeQuery("SELECT Nombre FROM Proyectos JOIN Colaboracion WHERE Proyectos_idProyectos='" + idpr + "'");            
+            String nomp="";
+                while(rs2.next()){
+                    nomp = rs2.getString("Nombre");
+                }
+                
+            if(aprb.equals("0")){
+                aprb = "Solicitud pendiente";
+            }else if(aprb.equals("1")){
+                aprb = "Colaborando";
+            }else{
+                aprb = "Rechazado";
             }
-            
-            PreparedStatement stmt3=con.prepareStatement("SELECT Nombre FROM DatosEmpresa WHERE usuario_id_usuarios='" + iu + "'");
-            ResultSet rs3=stmt3.executeQuery("SELECT Nombre FROM DatosEmpresa WHERE usuario_id_usuarios='" + iu + "'");
-            
-            while(rs3.next()){
-                empresa = rs3.getString("Nombre");
-            }
+            String idp = rs.getString("idColaboracion");
      
                 
                 out.println(
-                        "<form method=\"post\" action=\"Colaborar\" id=\"form-crear-proyecto\">" +
+                        "<form method=\"post\" action=\"EliminarColab\" id=\"form-crear-proyecto\">" +
                         "<div class=\"fieldset-form\">" +
                         "<div class=\"img-proyecto-fecha\">" +
                         "<img src=\"./images/logo.jpg\" alt=\"\" class=\"imagen-empresa\">" +
                         "<br><div class=\"titulo-descripcion\">" +
-                        "<br><p class=\"visualizar-titulo-proyecto\">Nombre: " + rs.getString("Nombre") + "</p>" +
-                        " <br><p class=\"visualizar-titulo-proyecto\"> Empresa: " + empresa + "</p>" +
-                        " <br><p class=\"visualizar-descripcion-proyecto\"> Etiquetas: " + etiqueta + "</p>" +
-                        " <br><p class=\"visualizar-descripcion-proyecto\">  Descripcion: " + rs.getString("Descripcion") + "</p>" +
-                        "<div class=\"tecnologias-usadas-y-botones\">" +
-                        "<div class=\"tecnologias-usadas\">"+
-                        " <br><p class=\"tecnologia\"></p> Tecnologias: " + rs.getString("Tecnologias") + "</p>" +
-                        " </div><br><p class=\"visualizar-descripcion-proyecto\"> Progreso: " + rs.getString("Progreso") + "%</p>" +
-                        " <br><p class=\"visualizar-descripcion-proyecto\"> Perfil buscado: " + rs.getString("Perfil") + "</p>" +
-                        " <br><p class=\"visualizar-descripcion-proyecto\"> Numero de colaboradores: " + rs.getString("NoColab") + "</p>" +
+                        "<br><p class=\"visualizar-titulo-proyecto\">  Proyecto:   " + nomp + "</p>" +
+                        " <br><p class=\"visualizar-titulo-proyecto\"> Estado de la peticion:    " + aprb + "</p>" +
                         "</div><br>" +
                         "</div>" +
                         "</div>" 
@@ -165,7 +156,7 @@
                                 "<select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
                                 "<option value=\""+ idp +"\">"+ idp +"</option>" +
                                 "</select>" +
-                                "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Colaborar\">" +
+                                "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Eliminar colaboracion\">" +
                                 "</form>" 
                             );
                         }else{
@@ -183,7 +174,7 @@
                    + "<div class=\"fieldset-form\"> "
                    + "<img src=\"./images/logo.jpg\" alt=\"\" class=\"imagen-empresa\"> "
                    + "<br><div class=\"titulo-descripcion\">"
-                   + "<br><p class=\"visualizar-titulo-proyecto\">  No hay proyectos disponibles  </p>" 
+                   + "<br><p class=\"visualizar-titulo-proyecto\">  No hay colaboraciones  </p>" 
                    + "</div>" +
                     "</div>" +
                     "</div>" +

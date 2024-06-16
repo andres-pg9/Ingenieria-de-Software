@@ -20,6 +20,10 @@
         <servlet-name>AltaProyecto</servlet-name>
         <servlet-class>Servlets.AltaProyecto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Colaborar</servlet-name>
+        <servlet-class>Servlets.Colaborar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>AltaProyecto</servlet-name>
         <url-pattern>/AltaProyecto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Colaborar</servlet-name>
+        <url-pattern>/Colaborar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
