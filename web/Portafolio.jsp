@@ -103,7 +103,43 @@
             </div>
         </div>
     </nav>
-    
+    <section class="inicio-empresas">
+    <section class="proyectos">
+        <form method="post" action="AltaArch" id="form-crear-proyecto">
+          <div class="fieldset-form">
+            <div class="titulo-botones">
+              <input type="text" class="entrada-texto-principal" placeholder="Agregar nombre del cambio" id="tituloProyecto"
+                     name="Cambio" required maxlength="45" minlength="1" autofocus
+                     pattern="^(?=.{1,45}$)[a-zA-ZáéíóúÁÉÍÓÚñÑ.0-9]+(?:\s[a-zA-ZáéíóúÁÉÍÓÚ.0-9]+)*$">
+              
+              <div class="botones-nuevo-proyecto">
+                <span id="botonTexto">
+                  <img src="./images/texto.png" alt="" class="icono-boton">
+                </span>
+                <span id="botonArchivo">
+                  <img src="./images/clip.png" alt="" class="icono-boton">
+                </span>
+                <span id="botonImagen">
+                  <img src="./images/imagen.png" alt="" class="icono-boton">
+                </span>
+                <span id="botonEnlace">
+                  <img src="./images/enlace.png" alt="" class="icono-boton">
+                </span>
+              </div>
+            </div>
+            </div>
+            <div class="contexto-y-entrada mb-3">
+                <label for="documentoValidacionEmpresa" class="form-label"><i class="bi bi-file-pdf"></i> Archivo*</label>
+                <input type="file" class="entrada-formulario-registro form-control" id="archivoValidarEmpresa" name="Archivo" required>
+                <span class="mensaje-error">Proporciona un archivo valido</span>
+              </div>
+            <div class="contenedor-seleccionadores">
+
+              <input type="submit" value="Subir cambio" class="btn-publicar">
+            </div>
+          </div>
+        </form>
+      </section>
 <%
             
             int i = 0;
@@ -113,30 +149,13 @@
             Statement st=con.createStatement();
            
            
-            PreparedStatement stmt=con.prepareStatement("SELECT idColaboracion, Aprobacion, Proyectos_idProyectos FROM Colaboracion");
-            ResultSet rs=stmt.executeQuery("SELECT idColaboracion, Aprobacion, Proyectos_idProyectos FROM Colaboracion");
+            PreparedStatement stmt=con.prepareStatement("SELECT Nombre, Archivos, Fecha FROM Portafolio WHERE Colaboracion_idColaboracion='" + sesion.getAttribute("Portafolio") + "'");
+            ResultSet rs=stmt.executeQuery("SELECT Nombre, Archivos, Fecha FROM Portafolio WHERE Colaboracion_idColaboracion='" + sesion.getAttribute("Portafolio") + "'");
 
             
             
             
             while(rs.next()){
-            String aprb = rs.getString("Aprobacion");
-            String idpr = rs.getString("Proyectos_idProyectos");
-            PreparedStatement stmt2=con.prepareStatement("SELECT Nombre FROM Proyectos JOIN Colaboracion WHERE Proyectos_idProyectos='" + idpr + "'");
-            ResultSet rs2=stmt2.executeQuery("SELECT Nombre FROM Proyectos JOIN Colaboracion WHERE Proyectos_idProyectos='" + idpr + "'");            
-            String nomp="";
-                while(rs2.next()){
-                    nomp = rs2.getString("Nombre");
-                }
-                
-            if(aprb.equals("0")){
-                aprb = "Solicitud pendiente";
-            }else if(aprb.equals("1")){
-                aprb = "Colaborando";
-            }else{
-                aprb = "Rechazado";
-            }
-            String idp = rs.getString("idColaboracion");
      
                 
                 out.println(
@@ -145,35 +164,14 @@
                         "<div class=\"img-proyecto-fecha\">" +
                         "<img src=\"./images/logo.jpg\" alt=\"\" class=\"imagen-empresa\">" +
                         "<br><div class=\"titulo-descripcion\">" +
-                        "<br><p class=\"visualizar-titulo-proyecto\">  Proyecto:   " + nomp + "</p>" +
-                        " <br><p class=\"visualizar-titulo-proyecto\"> Estado de la peticion:    " + aprb + "</p>" +
+                        "<br><p class=\"visualizar-titulo-proyecto\">  Cambio:   " + rs.getString("Nombre") + "</p>" +
+                        " <br><p class=\"visualizar-descripcion-proyecto\"> Archivo:    " + rs.getString("Archivos") + "</p>" +
+                        " <br><p class=\"visualizar-descripcion-proyecto\"> Fecha de publicacion:    " + rs.getString("Fecha") + "</p>" +
                         "</div><br>" +
                         "</div>" +
                         "</div>" 
                         );
-                        if(sesion.getAttribute(prio)=="1"){
-                            out.println(
-                                "<select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
-                                "<option value=\""+ idp +"\">"+ idp +"</option>" +
-                                "</select>" +
-                                "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Eliminar colaboracion\">" +
-                                "</form>"
-                            );
-                                if(aprb.equals("Colaborando")){
-                                    out.println(
-                                        "<form method=\"post\" action=\"Portafolio\" id=\"form-crear-proyecto\">" +
-                                        "<select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
-                                        "<option value=\""+ idp +"\">"+ idp +"</option>" +
-                                        "</select>" +
-                                        "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Portafolio de colaboracion\">" +
-                                        "</form>"
-                                        );
-                                    }
-                        }else{
-                            out.println(
-                                "</form>" 
-                            );
-                        }
+                        
 
                         
                 i++;
@@ -184,7 +182,7 @@
                    + "<div class=\"fieldset-form\"> "
                    + "<img src=\"./images/logo.jpg\" alt=\"\" class=\"imagen-empresa\"> "
                    + "<br><div class=\"titulo-descripcion\">"
-                   + "<br><p class=\"visualizar-titulo-proyecto\">  No hay colaboraciones  </p>" 
+                   + "<br><p class=\"visualizar-titulo-proyecto\">  No hay archivos  </p>" 
                    + "</div>" +
                     "</div>" +
                     "</div>" +

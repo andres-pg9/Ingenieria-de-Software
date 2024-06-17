@@ -159,6 +159,16 @@
                                 "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Rechazar colaboracion\">" +
                                 "</form>" 
                             );
+                            if(aprb.equals("Colaborando")){
+                                    out.println(
+                                        "<form method=\"post\" action=\"Portafolio\" id=\"form-crear-proyecto\">" +
+                                        "<select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
+                                        "<option value=\""+ idp +"\">"+ idp +"</option>" +
+                                        "</select>" +
+                                        "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Portafolio de colaboracion\">" +
+                                        "</form>"
+                                        );
+                                    }
                         }else{
                             out.println(
                                 "<br><select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
@@ -173,6 +183,7 @@
                                 "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Rechazar colaboracion\">" +
                                 "</form>" 
                             );
+                            
                         }
 
                         

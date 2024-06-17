@@ -40,6 +40,14 @@
         <servlet-name>EliminarProyecto</servlet-name>
         <servlet-class>Servlets.EliminarProyecto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Portafolio</servlet-name>
+        <servlet-class>Servlets.Portafolio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaArch</servlet-name>
+        <servlet-class>Servlets.AltaArch</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -79,6 +87,14 @@
     <servlet-mapping>
         <servlet-name>EliminarProyecto</servlet-name>
         <url-pattern>/EliminarProyecto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Portafolio</servlet-name>
+        <url-pattern>/Portafolio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaArch</servlet-name>
+        <url-pattern>/AltaArch</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
