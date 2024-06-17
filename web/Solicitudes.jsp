@@ -140,6 +140,7 @@
      
                 
                 out.println(
+                        "<section class=\"proyectos\"> "+
                         "<form method=\"post\" action=\"AceptarColab\" id=\"form-crear-proyecto\">" +
                         "<div class=\"fieldset-form\">" +
                         "<div class=\"img-proyecto-fecha\">" +
@@ -156,8 +157,7 @@
                                 "<select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
                                 "<option value=\""+ idp +"\">"+ idp +"</option>" +
                                 "</select>" +
-                                "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Rechazar colaboracion\">" +
-                                "</form>" 
+                                "<input type=\"submit\" class=\"btn-publicar\" value=\"Rechazar colaboracion\">" 
                             );
                             if(aprb.equals("Colaborando")){
                                     out.println(
@@ -165,8 +165,9 @@
                                         "<select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
                                         "<option value=\""+ idp +"\">"+ idp +"</option>" +
                                         "</select>" +
-                                        "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Portafolio de colaboracion\">" +
-                                        "</form>"
+                                        "<input type=\"submit\" class=\"btn-publicar\" value=\"Portafolio de colaboracion\">" +
+                                        "</form>"+
+                                        "</section><br>"
                                         );
                                     }
                         }else{
@@ -174,14 +175,15 @@
                                 "<br><select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
                                 "<option value=\""+ idp +"\">"+ idp +"</option>" +
                                 "</select>" +
-                                "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Aceptar colaboracion\">" +
+                                "<input type=\"submit\" class=\"btn-publicar\" value=\"Aceptar colaboracion\">" +
                                 "</form>"  +
                                 "<br><form method=\"post\" action=\"RechazarColab\" id=\"form-crear-proyecto\">" + 
                                 "<select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
                                 "<option value=\""+ idp +"\">"+ idp +"</option>" +
                                 "</select>" +
-                                "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Rechazar colaboracion\">" +
-                                "</form>" 
+                                "<input type=\"submit\" class=\"btn-publicar\" value=\"Rechazar colaboracion\">" +
+                                "</form>" +
+                                "</section><br>"
                             );
                             
                         }

@@ -25,7 +25,7 @@ public class BD {
         String dbUsername = "root"; 
         String dbPassword = "n0m3l0"; 
   
-        Class.forName(dbDriver).newInstance(); 
+        Class.forName(dbDriver).newInstance();
         Connection con = DriverManager.getConnection(dbURL + dbName, 
                                                      dbUsername,  
                                                      dbPassword); 

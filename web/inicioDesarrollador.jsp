@@ -141,6 +141,7 @@
      
                 
                 out.println(
+                        "<section class=\"proyectos\"> "+
                         "<form method=\"post\" action=\"Colaborar\" id=\"form-crear-proyecto\">" +
                         "<div class=\"fieldset-form\">" +
                         "<div class=\"img-proyecto-fecha\">" +
@@ -158,14 +159,16 @@
                         " <br><p class=\"visualizar-descripcion-proyecto\"> Numero de colaboradores: " + rs.getString("NoColab") + "</p>" +
                         "</div><br>" +
                         "</div>" +
-                        "</div>" 
+                        "</div>" +
+                        "</div><br>" +
+                        "<section class=\"proyectos\"> "
                         );
                         if(sesion.getAttribute(prio)=="1"){
                             out.println(
                                 "<select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
                                 "<option value=\""+ idp +"\">"+ idp +"</option>" +
                                 "</select>" +
-                                "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Colaborar\">" +
+                                "<input type=\"submit\" class=\"btn-publicar\" value=\"Colaborar\">" +
                                 "</form>" 
                             );
                         }else{

@@ -242,10 +242,10 @@
                         "<select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
                         "<option value=\""+ idp +"\">"+ idp +"</option>" +
                         "</select>" +
-                        "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Eliminar proyecto\">" +
+                        "<input type=\"submit\" class=\"btn-publicar\" value=\"Eliminar proyecto\">" +
                         "</div><br>" +
                         "</div>" +
-                        "</div></section>" 
+                        "</div>" 
                         );
                         
 

@@ -140,6 +140,7 @@
      
                 
                 out.println(
+                        "<section class=\"proyectos\"> "+
                         "<form method=\"post\" action=\"EliminarColab\" id=\"form-crear-proyecto\">" +
                         "<div class=\"fieldset-form\">" +
                         "<div class=\"img-proyecto-fecha\">" +
@@ -156,7 +157,7 @@
                                 "<select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
                                 "<option value=\""+ idp +"\">"+ idp +"</option>" +
                                 "</select>" +
-                                "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Eliminar colaboracion\">" +
+                                "<input type=\"submit\" class=\"btn-publicar\" value=\"Eliminar colaboracion\">" +
                                 "</form>"
                             );
                                 if(aprb.equals("Colaborando")){
@@ -165,13 +166,16 @@
                                         "<select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
                                         "<option value=\""+ idp +"\">"+ idp +"</option>" +
                                         "</select>" +
-                                        "<input type=\"submit\" class=\"boton-enviar btn btn-primary\" value=\"Portafolio de colaboracion\">" +
-                                        "</form>"
+                                        "<input type=\"submit\" class=\"btn-publicar\" value=\"Portafolio de colaboracion\">" +
+                                        "</form>"+
+                                        "</form>"+
+                                        "</section><br>"
                                         );
                                     }
                         }else{
                             out.println(
-                                "</form>" 
+                                "</form>" +
+                                "</section><br>"
                             );
                         }
 
@@ -189,7 +193,7 @@
                     "</div>" +
                     "</div>" +
                     "</form>" +
-                    "</section>" 
+                    "</section><br>" 
                    );
            }
             
