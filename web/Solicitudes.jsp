@@ -44,10 +44,10 @@
             </div>
             
             <!--Cuadro de búsqueda-->
-            <form class="d-flex w-50 justify-content-center" role="search" id="form-buscar">
+            <form method="post" action="Buscar" class="d-flex w-50 justify-content-center" role="search" id="form-buscar">
                 <div class="input-group w-75">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                    <input class="form-control" type="search" placeholder="Buscar empresa o proyecto" aria-label="Search" aria-describedby="basic-addon1">
+                    <input name="buscar" class="form-control" type="search" placeholder="Buscar empresa o proyecto" aria-label="Search" aria-describedby="basic-addon1">
                 </div>
                 <button class="btn btn-secondary" type="submit">Buscar</button>
             </form>
@@ -103,7 +103,10 @@
             </div>
         </div>
     </nav>
-    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <%
             
             int i = 0;
@@ -113,30 +116,34 @@
             Statement st=con.createStatement();
            
            
-            PreparedStatement stmt=con.prepareStatement("SELECT idColaboracion, Aprobacion, Proyectos_idProyectos FROM Colaboracion");
-            ResultSet rs=stmt.executeQuery("SELECT idColaboracion, Aprobacion, Proyectos_idProyectos FROM Colaboracion");
+            PreparedStatement stmt=con.prepareStatement("SELECT Solicitud, idColaboracion, Aprobacion, Proyectos_idProyectos FROM Colaboracion");
+            ResultSet rs=stmt.executeQuery("SELECT Solicitud, idColaboracion, Aprobacion, Proyectos_idProyectos FROM Colaboracion");
 
             
-            
+            int j = 0;
             
             while(rs.next()){
             String aprb = rs.getString("Aprobacion");
             String idpr = rs.getString("Proyectos_idProyectos");
-            PreparedStatement stmt2=con.prepareStatement("SELECT Nombre FROM Proyectos JOIN Colaboracion WHERE Proyectos_idProyectos='" + idpr + "'");
-            ResultSet rs2=stmt2.executeQuery("SELECT Nombre FROM Proyectos JOIN Colaboracion WHERE Proyectos_idProyectos='" + idpr + "'");            
+            String nu = rs.getString("Solicitud");
+            PreparedStatement stmt2=con.prepareStatement("SELECT Nombre FROM Proyectos JOIN Colaboracion WHERE Proyectos_idProyectos='" + idpr + "' and Proyectos.Usuario_id_usuarios='" + sesion.getAttribute(usr) + "'");
+            ResultSet rs2=stmt2.executeQuery("SELECT Nombre FROM Proyectos JOIN Colaboracion WHERE Proyectos_idProyectos='" + idpr + "' and Proyectos.Usuario_id_usuarios='" + sesion.getAttribute(usr) + "'");            
             String nomp="";
-                while(rs2.next()){
-                    nomp = rs2.getString("Nombre");
-                }
-                
-            if(aprb.equals("0")){
-                aprb = "Solicitud pendiente";
-            }else if(aprb.equals("1")){
-                aprb = "Colaborando";
-            }else{
-                aprb = "Rechazado";
-            }
+            
             String idp = rs.getString("idColaboracion");
+                j = 0;
+                while(rs2.next()){
+                    System.out.println("Iteracion " + j);
+                    if(j==0){
+                    nomp = rs2.getString("Nombre");
+                    System.out.println("Entro " + nomp);
+                    if(aprb.equals("0")){
+                        aprb = "Solicitud pendiente";
+                    }else if(aprb.equals("1")){
+                        aprb = "Colaborando";
+                    }else{
+                        aprb = "Rechazado";
+                    }
      
                 
                 out.println(
@@ -147,6 +154,7 @@
                         "<img src=\"./images/logo.jpg\" alt=\"\" class=\"imagen-empresa\">" +
                         "<br><div class=\"titulo-descripcion\">" +
                         "<br><p class=\"visualizar-titulo-proyecto\">  Proyecto:   " + nomp + "</p>" +
+                        " <br><p class=\"visualizar-titulo-proyecto\"> Desarrollador:    " + nu + "</p>" +
                         " <br><p class=\"visualizar-titulo-proyecto\"> Estado de la peticion:    " + aprb + "</p>" +
                         "</div><br>" +
                         "</div>" +
@@ -157,7 +165,8 @@
                                 "<select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
                                 "<option value=\""+ idp +"\">"+ idp +"</option>" +
                                 "</select>" +
-                                "<input type=\"submit\" class=\"btn-publicar\" value=\"Rechazar colaboracion\">" 
+                                "<input type=\"submit\" class=\"btn-publicar\" value=\"Rechazar colaboracion\">" +
+                                "</form>"
                             );
                             if(aprb.equals("Colaborando")){
                                     out.println(
@@ -169,7 +178,9 @@
                                         "</form>"+
                                         "</section><br>"
                                         );
-                                    }
+                                    }else{
+                                    out.println("</section><br>");
+                                }
                         }else{
                             out.println(
                                 "<br><select id=\"generoUsuario\" class=\"entrada-formulario-registro form-control\" name=\"colab\">" +
@@ -187,6 +198,11 @@
                             );
                             
                         }
+                    }
+                    j++;
+                }
+                
+            
 
                         
                 i++;

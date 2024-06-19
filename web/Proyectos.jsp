@@ -44,10 +44,10 @@
             </div>
             
             <!--Cuadro de búsqueda-->
-            <form class="d-flex w-50 justify-content-center" role="search" id="form-buscar">
+            <form method="post" action="Buscar" class="d-flex w-50 justify-content-center" role="search" id="form-buscar">
                 <div class="input-group w-75">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                    <input class="form-control" type="search" placeholder="Buscar empresa o proyecto" aria-label="Search" aria-describedby="basic-addon1">
+                    <input name="buscar" class="form-control" type="search" placeholder="Buscar empresa o proyecto" aria-label="Search" aria-describedby="basic-addon1">
                 </div>
                 <button class="btn btn-secondary" type="submit">Buscar</button>
             </form>
@@ -103,6 +103,7 @@
             </div>
         </div>
     </nav>
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <section class="inicio-empresas">
     <section class="proyectos">
         <form method="post" action="AltaProyecto" id="form-crear-proyecto">
@@ -199,8 +200,8 @@
             Statement st=con.createStatement();
            
            
-             stmt=con.prepareStatement("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos WHERE Usuario_id_usuarios='" + sesion.getAttribute(prio) + "'");
-             rs=stmt.executeQuery("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos WHERE Usuario_id_usuarios='" + sesion.getAttribute(prio) + "'");
+             stmt=con.prepareStatement("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos WHERE Usuario_id_usuarios='" + sesion.getAttribute(usr) + "'");
+             rs=stmt.executeQuery("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos WHERE Usuario_id_usuarios='" + sesion.getAttribute(usr) + "'");
             
             while(rs.next()){
             String etiqueta="", empresa="";
@@ -245,7 +246,7 @@
                         "<input type=\"submit\" class=\"btn-publicar\" value=\"Eliminar proyecto\">" +
                         "</div><br>" +
                         "</div>" +
-                        "</div>" 
+                        "</div></section>" 
                         );
                         
 

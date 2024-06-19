@@ -47,7 +47,7 @@
             <form method="post" action="Buscar" class="d-flex w-50 justify-content-center" role="search" id="form-buscar">
                 <div class="input-group w-75">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                    <input name="buscar" class="form-control" type="search" placeholder="Buscar empresa o proyecto" aria-label="Search" aria-describedby="basic-addon1">
+                    <input class="form-control" type="search" placeholder="Buscar empresa o proyecto" aria-label="Search" aria-describedby="basic-addon1">
                 </div>
                 <button class="btn btn-secondary" type="submit">Buscar</button>
             </form>
@@ -107,6 +107,8 @@
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <%
             
             int i = 0;
@@ -115,12 +117,86 @@
             
             Statement st=con.createStatement();
            
+            PreparedStatement stmt=con.prepareStatement("SELECT id_usuarios, Nombres, Apellido, Correo, FechaDeNac, NombreUsuario, TipoUsuario_idTipousuario FROM Usuario WHERE NombreUsuario='" + sesion.getAttribute("Buscar") + "'");
+            ResultSet rs=stmt.executeQuery("SELECT id_usuarios, Nombres, Apellido, Correo, FechaDeNac, NombreUsuario, TipoUsuario_idTipousuario FROM Usuario WHERE NombreUsuario='" + sesion.getAttribute("Buscar") + "'");
+                
+                while(rs.next()){
+                    if(rs.getString("TipoUsuario_idTipousuario")=="1"){
+                        int j = 0;
+                        PreparedStatement stmt2=con.prepareStatement("SELECT Antecedentes, Descripcion FROM DatosDev WHERE usuario_id_usuarios='" + rs.getString("id_usuarios") + "'");
+                        ResultSet rs2=stmt2.executeQuery("SELECT Antecedentes, Descripcion FROM DatosDev WHERE usuario_id_usuarios='" + rs.getString("id_usuarios") + "'");
+                
+                        while(rs2.next()){
+                            if(j==0){
+                                out.println(
+                                "<section class=\"proyectos\"> "+
+                                "<form method=\"post\" action=\"EditarPerfil\" id=\"form-crear-proyecto\">" +
+                                "<div class=\"fieldset-form\">" +
+                                "<div class=\"img-proyecto-fecha\">" +
+                                "<img src=\"./images/logo.jpg\" alt=\"\" class=\"imagen-empresa\">" +
+                                "<br><div class=\"titulo-descripcion\">" +
+                                "<br><p class=\"visualizar-titulo-proyecto\">@" + rs.getString("NombreUsuario") + "</p>" +
+                                " <br><p class=\"visualizar-titulo-proyecto\"> Nombre: " + rs.getString("Nombres") + "</p>" +
+                                " <br><p class=\"visualizar-titulo-proyecto\"> Apellido: " + rs.getString("Apellido") + "</p>" +
+                                " <br><p class=\"visualizar-descripcion-proyecto\"> Correo: " + rs.getString("Correo") + "</p>" +
+                                " <br><p class=\"visualizar-descripcion-proyecto\">  Fecha de Nacimiento: " + rs.getString("FechaDeNac") + "</p>" +
+                                " <br><p class=\"visualizar-descripcion-proyecto\">  Antecedentes: " + rs2.getString("Antecedentes") + "</p>" +
+                                " <br><p class=\"visualizar-descripcion-proyecto\">  Descripcion " + rs2.getString("Descripcion") + "</p>" +
+                                "<div class=\"tecnologias-usadas-y-botones\">" +
+                                "<div class=\"tecnologias-usadas\">"+
+                                "</div><br>" +
+                                "</div>" +
+                                "</div>" +
+                                "</div>" +
+                                "</div></form>"  +
+                        "</section><br>"
+                                );
+                            }
+                            j++;
+                        }
+                    }else{
+                        int j = 0;
+                        PreparedStatement stmt2=con.prepareStatement("SELECT Nombre, Localizacion, TipoDeEmpreza FROM DatosEmpresa WHERE usuario_id_usuarios='" + rs.getString("id_usuarios") + "'");
+                        ResultSet rs2=stmt2.executeQuery("SELECT Nombre, Localizacion, TipoDeEmpreza FROM DatosEmpresa WHERE usuario_id_usuarios='" + rs.getString("id_usuarios") + "'");
+                        while(rs2.next()){
+                            if(j==0){
+                                out.println(
+                                "<section class=\"proyectos\"> "+
+                                "<form method=\"post\" action=\"EditarPerfil\" id=\"form-crear-proyecto\">" +
+                                "<div class=\"fieldset-form\">" +
+                                "<div class=\"img-proyecto-fecha\">" +
+                                "<img src=\"./images/logo.jpg\" alt=\"\" class=\"imagen-empresa\">" +
+                                "<br><div class=\"titulo-descripcion\">" +
+                                "<br><p class=\"visualizar-titulo-proyecto\">@" + rs.getString("NombreUsuario") + "</p>" +
+                                " <br><p class=\"visualizar-titulo-proyecto\">  Empresa: " + rs2.getString("Nombre") + "</p>" +
+                                " <br><p class=\"visualizar-titulo-proyecto\"> Nombre del encargado de la cuenta: " + rs.getString("Nombres") + "</p>" +
+                                " <br><p class=\"visualizar-titulo-proyecto\"> Apellido: " + rs.getString("Apellido") + "</p>" +
+                                " <br><p class=\"visualizar-descripcion-proyecto\"> Correo: " + rs.getString("Correo") + "</p>" +
+                                " <br><p class=\"visualizar-descripcion-proyecto\">  Fecha de Nacimiento: " + rs.getString("FechaDeNac") + "</p>" +
+                                " <br><p class=\"visualizar-descripcion-proyecto\">  Localizacion: " + rs2.getString("Localizacion") + "</p>" +
+                                " <br><p class=\"visualizar-descripcion-proyecto\">  Tipo de empresa: " + rs2.getString("TipoDeEmpreza") + "</p>" +
+                                "<div class=\"tecnologias-usadas-y-botones\">" +
+                                "<div class=\"tecnologias-usadas\">"+
+                                "</div><br>" +
+                                "</div>" +
+                                "</div>" +
+                                "</div>" +
+                                "</div></form>" +
+                        "</section><br>"
+                                );
+                            }
+                            j++;
+                        }
+                    }
+                    i++;
+                }
            
-            PreparedStatement stmt=con.prepareStatement("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos");
-            ResultSet rs=stmt.executeQuery("SELECT idProyectos, Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos");
-            
-            
-            
+                
+                //Proyectos
+                
+            i=0;
+            stmt=con.prepareStatement("SELECT idProyectos, Proyectos.Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos NATURAL JOIN Usuario WHERE Usuario.NombreUsuario='" + sesion.getAttribute("Buscar") + "' or Proyectos.Nombre='" + sesion.getAttribute("Buscar") +"'");
+            rs=stmt.executeQuery("SELECT idProyectos, Proyectos.Nombre, Descripcion, Tecnologias, Progreso, Perfil, NoColab, Usuario_id_usuarios, Etiquetas_idEtiquetas FROM Proyectos NATURAL JOIN Usuario WHERE Usuario.NombreUsuario='" + sesion.getAttribute("Buscar") + "' or Proyectos.Nombre='" + sesion.getAttribute("Buscar") +"'");
             
             
             while(rs.next()){
@@ -172,12 +248,12 @@
                                 "</select>" +
                                 "<input type=\"submit\" class=\"btn-publicar\" value=\"Colaborar\">" +
                                 "</form>" +
-                        "</section> "
+                        "</section><br>"
                             );
                         }else{
                             out.println(
                                 "</form>" +
-                        "</section> "
+                        "</section><br>"
                             );
                         }
 

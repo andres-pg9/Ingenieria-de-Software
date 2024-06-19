@@ -44,10 +44,10 @@
             </div>
             
             <!--Cuadro de búsqueda-->
-            <form class="d-flex w-50 justify-content-center" role="search" id="form-buscar">
+            <form method="post" action="Buscar" class="d-flex w-50 justify-content-center" role="search" id="form-buscar">
                 <div class="input-group w-75">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                    <input class="form-control" type="search" placeholder="Buscar empresa o proyecto" aria-label="Search" aria-describedby="basic-addon1">
+                    <input name="buscar" class="form-control" type="search" placeholder="Buscar empresa o proyecto" aria-label="Search" aria-describedby="basic-addon1">
                 </div>
                 <button class="btn btn-secondary" type="submit">Buscar</button>
             </form>
@@ -103,7 +103,10 @@
             </div>
         </div>
     </nav>
-    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <%
             
             int i = 0;
@@ -113,8 +116,8 @@
             Statement st=con.createStatement();
            
            
-            PreparedStatement stmt=con.prepareStatement("SELECT idColaboracion, Aprobacion, Proyectos_idProyectos FROM Colaboracion");
-            ResultSet rs=stmt.executeQuery("SELECT idColaboracion, Aprobacion, Proyectos_idProyectos FROM Colaboracion");
+            PreparedStatement stmt=con.prepareStatement("SELECT idColaboracion, Aprobacion, Proyectos_idProyectos FROM Colaboracion WHERE Usuario_id_usuarios='" + sesion.getAttribute(usr) + "'");
+            ResultSet rs=stmt.executeQuery("SELECT idColaboracion, Aprobacion, Proyectos_idProyectos FROM Colaboracion  WHERE Usuario_id_usuarios='" + sesion.getAttribute(usr) + "'");
 
             
             
@@ -122,21 +125,24 @@
             while(rs.next()){
             String aprb = rs.getString("Aprobacion");
             String idpr = rs.getString("Proyectos_idProyectos");
-            PreparedStatement stmt2=con.prepareStatement("SELECT Nombre FROM Proyectos JOIN Colaboracion WHERE Proyectos_idProyectos='" + idpr + "'");
-            ResultSet rs2=stmt2.executeQuery("SELECT Nombre FROM Proyectos JOIN Colaboracion WHERE Proyectos_idProyectos='" + idpr + "'");            
+            PreparedStatement stmt2=con.prepareStatement("SELECT Nombre FROM Proyectos JOIN Colaboracion WHERE idProyectos='" + idpr + "'");
+            ResultSet rs2=stmt2.executeQuery("SELECT Nombre FROM Proyectos JOIN Colaboracion WHERE idProyectos='" + idpr + "'");            
             String nomp="";
-                while(rs2.next()){
-                    nomp = rs2.getString("Nombre");
-                }
-                
-            if(aprb.equals("0")){
-                aprb = "Solicitud pendiente";
-            }else if(aprb.equals("1")){
-                aprb = "Colaborando";
-            }else{
-                aprb = "Rechazado";
-            }
+            
             String idp = rs.getString("idColaboracion");
+            int j = 0;
+            while(rs2.next()){
+                    
+                    if(j==0){
+                    nomp = rs2.getString("Nombre");
+                    if(aprb.equals("0")){
+                        aprb = "Solicitud pendiente";
+                    }else if(aprb.equals("1")){
+                        aprb = "Colaborando";
+                    }else{
+                        aprb = "Rechazado";
+                    }
+            
      
                 
                 out.println(
@@ -168,16 +174,22 @@
                                         "</select>" +
                                         "<input type=\"submit\" class=\"btn-publicar\" value=\"Portafolio de colaboracion\">" +
                                         "</form>"+
-                                        "</form>"+
                                         "</section><br>"
                                         );
-                                    }
+                                    }else{
+                                    out.println("</section><br>");
+                                }
                         }else{
                             out.println(
                                 "</form>" +
                                 "</section><br>"
                             );
                         }
+                    }
+                    j++;
+                }
+                
+            
 
                         
                 i++;

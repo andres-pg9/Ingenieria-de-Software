@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  * @author bruni
  */
 @WebServlet(name = "Registrar", urlPatterns = {"/Registrar"})
-public class EliminarColab extends HttpServlet {
+public class Buscar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -77,12 +77,12 @@ public class EliminarColab extends HttpServlet {
 
             try{
                 
-                String colab = "";
+                String buscar = "";
                 
                 
 boolean flag = true;
-                if(request.getParameter("colab") != null){
-			colab = request.getParameter("colab");
+                if(request.getParameter("buscar") != null){
+			buscar = request.getParameter("buscar");
 		}
                 
                 System.out.println(flag);
@@ -99,44 +99,30 @@ boolean flag = true;
                 System.out.println("Obteniendo datos...");
                 System.out.println("Step 1");
                 HttpSession sesion=request.getSession();
-                     
-                    System.out.println("ID colab   " + colab);
-                       
-                        if(colab.equals("")){
-                            request.setAttribute("a1", "<font color='white'>(Ingresa un correo no registrado)</font>");
-                            flag=false;
-                        }
-                        if(flag==true){
+                    
+                System.out.println("Iniciando incercion");
+                    System.out.println("Buscando proyectos o cuentas");
                         
-                        System.out.println("Dando de baja colaboracion");
-                        
-                        st.executeUpdate("DELETE FROM Portafolio WHERE Colaboracion_idcolaboracion ='"+ colab +"'");
-                        st.executeUpdate("DELETE FROM Colaboracion WHERE idcolaboracion ='"+ colab +"'");
-                        //0 Solicitado 1 Aprobado 2 Denegado
-                        
-                        }else{
-                            RequestDispatcher rd = request.getRequestDispatcher("Colaboracion.jsp"); 
-                            rd.forward(request,response);
-                        }
+                        sesion.setAttribute("Buscar",buscar);
 
-            response.sendRedirect("Colaboracion.jsp");
+            response.sendRedirect("buscar.jsp");
             st.close();
             con.close();
 
             }
             else{
-            RequestDispatcher rd = request.getRequestDispatcher("Colaboracion.jsp"); 
+            RequestDispatcher rd = request.getRequestDispatcher("inicioDesarrollador.jsp"); 
              rd.forward(request,response);
             }
             
             }catch (SQLException ex) {
-			Logger.getLogger(EliminarColab.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(Buscar.class.getName()).log(Level.SEVERE, null, ex);
 		} catch (ClassNotFoundException ex) {
-            Logger.getLogger(EliminarColab.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Buscar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            Logger.getLogger(EliminarColab.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Buscar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(EliminarColab.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Buscar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
